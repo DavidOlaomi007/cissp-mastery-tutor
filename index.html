@@ -421,6 +421,40 @@ h1 span {
   font-weight: 700;
 }
 
+.dom-summary {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-radius: 8px;
+  border-left: 3px solid var(--card-color, var(--accent));
+}
+
+.key-note-item {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.6;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  padding-left: 20px;
+}
+
+.key-note-item:last-child {
+  border-bottom: none;
+}
+
+.key-note-item::before {
+  content: '\2605';
+  position: absolute;
+  left: 0;
+  color: var(--warning);
+  font-size: 10px;
+  top: 8px;
+}
+
 .dom-terms,
 .dom-gotchas,
 .dom-mnemonics {
@@ -1768,6 +1802,18 @@ const DOMAINS = [
       "STRIDE = Spoofing, Tampering, Repudiation, Info Disclosure, DoS, Elevation",
       "ALE = SLE × ARO (All Losses Expected = Single Loss × Annual Rate)",
       "Risk responses: MATT = Mitigate, Accept, Transfer, Terminate/Avoid"
+    ],
+    summary: "The heaviest domain at 15%. Covers governance, risk, compliance, legal, BCP, ethics. Think like a manager — every decision should balance cost, risk, and business objectives. This domain tests your ability to make executive-level security decisions.",
+    keyNotes: [
+      "ALE = SLE x ARO. Example: Asset worth $100K, EF 50%, so SLE=$50K. If it happens twice/year (ARO=2), ALE=$100K. Spend up to $100K on controls.",
+      "Risk treatment decision tree: Mitigate (reduce likelihood/impact), Transfer (insurance/outsource), Accept (cost of control > risk), Avoid (eliminate the activity).",
+      "ISC2 Code of Ethics canon order: 1) Protect society/infrastructure, 2) Act honorably/legally, 3) Provide competent service, 4) Advance the profession. Society ALWAYS comes first.",
+      "Due care = doing the right thing (actions). Due diligence = verifying it was done right (research/investigation). Both are required to avoid negligence.",
+      "BCP = keeping business running during disruption. DRP = restoring IT systems after disruption. BCP is broader and includes DRP.",
+      "Policy hierarchy: Policy (mandatory, high-level WHY) → Standard (mandatory, specific WHAT) → Procedure (mandatory, step-by-step HOW) → Guideline (recommended) → Baseline (minimum config).",
+      "GDPR requires breach notification to supervisory authority within 72 hours. Data subjects must be notified 'without undue delay' if high risk.",
+      "Qualitative risk analysis = subjective ratings (High/Med/Low), faster, used when data is lacking. Quantitative = dollar values (ALE/SLE/ARO), more precise, requires historical data.",
+      "IP law types: Patent (20 years, inventions), Copyright (life+70 years, creative works), Trademark (renewable, brand identity), Trade Secret (indefinite, must actively protect)."
     ]
   },
   {
@@ -1874,6 +1920,18 @@ const DOMAINS = [
     mnemonics: [
       "Data lifecycle: C-S-U-S-A-D = Create, Store, Use, Share, Archive, Destroy",
       "Sanitization levels: C-P-D = Clearing (reuse internally), Purging (reuse externally), Destruction"
+    ],
+    summary: "All about data — classifying it, protecting it, handling it through its lifecycle, and destroying it properly. The exam tests whether you understand WHO is responsible for data (roles) and HOW to protect it at every stage.",
+    keyNotes: [
+      "Data Owner = senior management, accountable for classification and protection decisions. Custodian = IT staff, implements controls. Steward = ensures data quality and metadata.",
+      "Government classification: Top Secret → Secret → Confidential → Unclassified. Commercial: Confidential/Proprietary → Private → Sensitive → Public.",
+      "Data lifecycle: Create → Store → Use → Share → Archive → Destroy. Security controls needed at every stage.",
+      "Destruction methods ranked: Degaussing (magnetic media only) < Overwriting (software-based) < Crypto-shredding (destroy keys) < Physical destruction (shredding/incineration — most effective).",
+      "Data remanence = residual data remaining after deletion. Overwriting once is insufficient for classified data. Use cryptographic erasure for SSDs (degaussing does not work on SSDs).",
+      "Privacy principles: Data minimization (collect only what you need), Purpose limitation (use only for stated purpose), Storage limitation (retain only as long as necessary).",
+      "GDPR data subject rights: Access, Rectification, Erasure (right to be forgotten), Portability, Restriction of processing, Object to processing.",
+      "PII = any info identifying an individual. PHI = health-related PII (HIPAA). PCI = payment card data (PCI-DSS). Different regulations, different controls.",
+      "Tokenization replaces sensitive data with non-reversible tokens (no key to reverse). Encryption transforms data with a key (reversible with key). Tokenization preferred for PCI scope reduction."
     ]
   },
   {
@@ -2017,6 +2075,19 @@ const DOMAINS = [
       "Biba = Bad Integrity People read down (no), write up (no) — keeps DATA clean",
       "Fire classes: ABCDK = Always Be Careful Doing Kitchen work",
       "CIA principles of secure design: LEAST = Least privilege, Economy, Abstraction, Simplicity, Trust"
+    ],
+    summary: "The most technical domain — security models, cryptography, PKI, physical security, and secure design. Know the models cold (which protects confidentiality vs integrity), understand crypto algorithm categories, and remember that design principles apply at every architectural decision.",
+    keyNotes: [
+      "Bell-LaPadula = confidentiality model. Simple Security: no read up (no reading above your clearance). Star Property: no write down (no leaking to lower levels). Think 'BLP = no Look uP'.",
+      "Biba = integrity model. Simple Integrity: no read down (don't trust lower integrity). Star Integrity: no write up (don't corrupt higher integrity). Exact opposite of BLP.",
+      "Clark-Wilson = integrity via well-formed transactions. Uses CDIs (constrained data items), UDIs (unconstrained), TPs (transformation procedures), and IVPs (integrity verification procedures).",
+      "Symmetric encryption: Same key encrypts and decrypts. AES is the standard (128/192/256-bit keys). Fast, used for bulk data. Problem: key distribution.",
+      "Asymmetric encryption: Key pair (public + private). RSA (2048+ bits), ECC (smaller keys, same security). Slow, used for key exchange and digital signatures.",
+      "Hashing is one-way (no key, no reversal). MD5 = broken. SHA-1 = weak. SHA-256 = current standard. Used for integrity verification and password storage.",
+      "Digital signature process: Sender hashes message → encrypts hash with sender's PRIVATE key → receiver decrypts with sender's PUBLIC key → compares hashes. Provides integrity + non-repudiation + authentication.",
+      "PKI trust chain: Root CA (self-signed, offline) → Intermediate CA (issues certs) → End entity certificate. Root CA compromise = entire PKI compromised.",
+      "OCSP (Online Certificate Status Protocol) checks cert status in real-time (single cert). CRL (Certificate Revocation List) is a published list of revoked certs (batch, can be stale).",
+      "Defense in depth = multiple layers of security controls. Fail-safe = default to no access on failure. Fail-secure = maintains locked state on failure. TCB = Trusted Computing Base = all hardware/software/firmware enforcing security policy."
     ]
   },
   {
@@ -2159,6 +2230,18 @@ const DOMAINS = [
       "OSI layers (top-down): All People Seem To Need Data Processing",
       "OSI layers (bottom-up): Please Do Not Throw Sausage Pizza Away",
       "TCP ports to remember: 20/21 FTP, 22 SSH, 23 Telnet, 25 SMTP, 53 DNS, 80 HTTP, 110 POP3, 143 IMAP, 443 HTTPS"
+    ],
+    summary: "Network protocols, attacks, and defenses. You must know the OSI model cold — what operates at each layer, what attacks target each layer, and what defenses protect each layer. Also covers VPNs, wireless, and modern architectures like Zero Trust.",
+    keyNotes: [
+      "OSI 7 layers: 7-Application (HTTP, phishing), 6-Presentation (SSL/TLS, format attacks), 5-Session (RPC, session hijacking), 4-Transport (TCP/UDP, SYN flood), 3-Network (IP/ICMP, spoofing), 2-Data Link (MAC, ARP poisoning), 1-Physical (cables, wiretapping).",
+      "TCP 3-way handshake: SYN → SYN-ACK → ACK. SYN flood attack sends thousands of SYNs without completing. Defense: SYN cookies (stateless tracking of half-open connections).",
+      "IPSec AH (Authentication Header) = integrity + authentication only, no encryption. ESP (Encapsulating Security Payload) = integrity + authentication + confidentiality (encryption).",
+      "IPSec modes: Transport mode = encrypts payload only (end-to-end, host-to-host). Tunnel mode = encrypts entire original packet (gateway-to-gateway, used in VPNs).",
+      "WPA3 uses SAE (Simultaneous Authentication of Equals) / Dragonfly handshake. Resistant to offline dictionary attacks. WPA2 used 4-way handshake (vulnerable to KRACK).",
+      "Stateful firewall operates at Layer 4 (tracks connection state). WAF (Web Application Firewall) operates at Layer 7 (inspects HTTP content, blocks SQL injection/XSS).",
+      "IDS = passive, detects and alerts (copy of traffic). IPS = inline, detects and blocks (sits in traffic path). Both can be signature-based or anomaly-based.",
+      "Zero Trust principle: Never trust, always verify. No implicit trust based on network location. Verify every user, device, and connection. Microsegmentation enforces this.",
+      "DMZ placement: External firewall → DMZ (web servers, mail relay) → Internal firewall → LAN. Two firewalls from different vendors for defense in depth."
     ]
   },
   {
@@ -2283,6 +2366,18 @@ const DOMAINS = [
       "AAA = Authentication, Authorization, Accountability (who you are, what you can do, what you did)",
       "Biometric errors: FAR = False Acceptance Rate (bad guy gets in), FRR = False Rejection Rate (good guy locked out)",
       "Access models: DAC = Discretionary (owner decides), MAC = Mandatory (system decides), RBAC = Role decides"
+    ],
+    summary: "Authentication, authorization, and accountability. The exam loves scenarios about which access control model to use and how SSO protocols work. Remember: authentication verifies WHO you are, authorization determines WHAT you can do, accountability tracks WHAT you did.",
+    keyNotes: [
+      "Three authentication factors: Type 1 = Knowledge (something you know — password, PIN). Type 2 = Possession (something you have — smart card, token). Type 3 = Biometric (something you are — fingerprint, iris).",
+      "MFA requires factors from DIFFERENT categories. Two passwords = not MFA. Password + smart card = MFA. Password + fingerprint = MFA.",
+      "Kerberos flow: Client → AS (Authentication Server) gets TGT → Client presents TGT to TGS (Ticket Granting Server) → gets service ticket → presents to target service. Uses symmetric encryption, time-sensitive (5-min clock skew).",
+      "SAML: IdP (Identity Provider) issues XML assertions to SP (Service Provider). Used for enterprise SSO. Browser-based, cross-domain. Three assertion types: Authentication, Attribute, Authorization.",
+      "OAuth 2.0 is for AUTHORIZATION (not authentication). Issues access tokens. Used when apps need to access resources on behalf of users. Think 'OAuth = Open Authorization'.",
+      "OIDC (OpenID Connect) adds AUTHENTICATION on top of OAuth 2.0. Issues ID tokens (JWT format). Used for 'Login with Google/Facebook'. OAuth + identity layer = OIDC.",
+      "DAC = owner controls access (flexible, Windows NTFS). MAC = system enforces labels/clearances (rigid, military). RBAC = access based on job role (enterprise standard). ABAC = access based on attributes/policies (most fine-grained, supports complex rules).",
+      "Biometric CER/EER (Crossover Error Rate / Equal Error Rate): The point where FAR (False Acceptance) equals FRR (False Rejection). Lower CER = more accurate biometric system.",
+      "JIT (Just-In-Time) access = grant privileges only when needed, auto-revoke after. JEA (Just-Enough-Access) = grant minimum privileges required. Both reduce standing privilege risk."
     ]
   },
   {
@@ -2397,6 +2492,18 @@ const DOMAINS = [
     mnemonics: [
       "Pentest phases: RSEPR = Recon, Scan, Exploit, Post-exploit, Report",
       "Testing types: Black = no info, White = full info, Gray = some info (like tea!)"
+    ],
+    summary: "How to verify security works — through assessments, testing, audits, and monitoring. Know the difference between vulnerability scans (automated, find weaknesses) and penetration tests (manual, exploit weaknesses). Understand audit types and what they prove.",
+    keyNotes: [
+      "Vulnerability assessment = automated scanning to FIND weaknesses (breadth). Penetration test = manual testing to EXPLOIT weaknesses (depth). Always get written authorization before pen testing.",
+      "Black box = zero knowledge (simulates external attacker). White box = full knowledge (source code, diagrams). Gray box = partial knowledge (some docs, credentials). White box finds more bugs but costs more.",
+      "CVSS 3.1 base score components: Attack Vector (AV), Attack Complexity (AC), Privileges Required (PR), User Interaction (UI), Scope (S), Confidentiality (C), Integrity (I), Availability (A). Score 0-10.",
+      "SOC 1 = financial controls (for auditors). SOC 2 Type I = security controls design at a point in time. SOC 2 Type II = security controls operating effectiveness over 6-12 months (more valuable).",
+      "SAST (Static Application Security Testing) = reviews source code without running it, finds bugs early, many false positives. DAST (Dynamic) = tests running application, fewer false positives, later in SDLC.",
+      "Fuzz testing = sends random, malformed, or unexpected input to find crashes, memory leaks, and unhandled exceptions. Effective at finding zero-day vulnerabilities in parsers and protocols.",
+      "SIEM (Security Information and Event Management) = aggregates logs from multiple sources, correlates events, generates alerts. Essential for continuous monitoring and incident detection.",
+      "Continuous monitoring per NIST SP 800-137: ongoing awareness of information security, vulnerabilities, and threats. Not a one-time activity — must be automated and persistent.",
+      "Rules of engagement must be documented BEFORE any penetration test: scope, timing, methods allowed, escalation contacts, get-out-of-jail-free letter, data handling requirements."
     ]
   },
   {
@@ -2526,6 +2633,18 @@ const DOMAINS = [
       "IR phases: PDCER = Prepare, Detect, Contain, Eradicate, Recover (+ Lessons Learned)",
       "DR sites: Hot = Immediate, Warm = Hours, Cold = Days (temperature = speed)",
       "Order of volatility: RAM before disk, network before logs (most fleeting first)"
+    ],
+    summary: "Day-to-day security — incident response, forensics, disaster recovery, and operational security. The IR lifecycle (NIST SP 800-61) is heavily tested. For every scenario, think: contain first, then investigate. Evidence handling and chain of custody are critical for forensics.",
+    keyNotes: [
+      "IR phases in order: Preparation → Detection & Analysis → Containment → Eradication → Recovery → Lessons Learned. Preparation is ongoing; Lessons Learned feeds back into Preparation.",
+      "Containment comes BEFORE eradication — stop the bleeding first. Short-term containment (isolate), then long-term containment (temp fix), then eradicate (remove root cause).",
+      "Chain of custody must be UNBROKEN for evidence admissibility. Document: who collected, when, where stored, who accessed, transfers. Any gap = evidence may be inadmissible.",
+      "Order of volatility (collect most volatile first): CPU registers → Cache → RAM → Disk → Remote logs → Archives/backups. Volatile evidence disappears when power is lost.",
+      "RTO (Recovery Time Objective) + WRT (Work Recovery Time) = MTD (Maximum Tolerable Downtime). RPO (Recovery Point Objective) = max acceptable data loss measured in time.",
+      "Hot site = fully equipped, hours to activate, most expensive. Warm site = partial equipment, days to activate. Cold site = empty facility, weeks to activate, cheapest.",
+      "RAID 5 = striping with distributed parity, survives 1 disk failure, minimum 3 disks. RAID 6 = double parity, survives 2 disk failures, minimum 4 disks. RAID 1 = mirroring.",
+      "Full backup = copies everything (slow, large). Incremental = copies only changes since LAST backup of any type (fast backup, slow restore). Differential = copies changes since last FULL backup (medium backup, faster restore).",
+      "Change management requires CAB (Change Advisory Board) approval before implementation. Emergency changes still need post-implementation review. All changes must be documented and tested."
     ]
   },
   {
@@ -2656,6 +2775,19 @@ const DOMAINS = [
       "OWASP Top 3: BAD = Broken Access Control, A02 Crypto Failures, Damn Injection",
       "SDLC with security: Requirements→Design→Code→Test→Deploy (add security at EVERY step)",
       "Injection prevention: VALIDATE input, PARAMETERIZE queries, ENCODE output"
+    ],
+    summary: "Secure software from design to deployment. OWASP Top 10 is essential — know each vulnerability and its defense. The exam emphasizes that security should be built in from the start (shift left), not bolted on after development.",
+    keyNotes: [
+      "Security in SDLC — cheapest to fix in requirements/design phase. The 1-10-100 rule: $1 to fix in design, $10 in development, $100 in production. Shift left = integrate security earlier.",
+      "OWASP Top 10 2021: A01 Broken Access Control (#1 most common), A02 Cryptographic Failures, A03 Injection. Know all 10 but focus on top 3 — they appear most on the exam.",
+      "SQL injection defense = parameterized queries / prepared statements. Input validation alone is NOT sufficient. Use stored procedures and least-privilege DB accounts as additional layers.",
+      "XSS types: Reflected (malicious script in URL, executed when victim clicks), Stored (script saved in database, executes for all visitors), DOM-based (client-side JavaScript manipulation).",
+      "CSRF defense = anti-CSRF tokens (unique per session/request) + SameSite cookie attribute. CSRF tricks authenticated users into performing unintended actions.",
+      "STRIDE threat modeling: Spoofing (authentication), Tampering (integrity), Repudiation (non-repudiation), Information Disclosure (confidentiality), Denial of Service (availability), Elevation of Privilege (authorization).",
+      "SAST = static analysis, white-box, early in SDLC, reviews code. DAST = dynamic analysis, black-box, late in SDLC, tests running app. IAST = hybrid, instruments runtime, combines both approaches.",
+      "Buffer overflow defenses: ASLR (Address Space Layout Randomization) randomizes memory locations. DEP (Data Execution Prevention) prevents code execution in data segments. Stack canaries detect buffer overflows before return.",
+      "DevSecOps = embedding security gates into CI/CD pipeline. Automated SAST/DAST scans, dependency checking, container scanning, IaC security scanning at every build.",
+      "SBOM (Software Bill of Materials) tracks all software components, libraries, and dependencies. Essential for supply chain security and vulnerability management (e.g., Log4Shell response)."
     ]
   }
 ];
@@ -7298,6 +7430,16 @@ function renderDomains() {
       '<div class="dom-title">' + dom.title + '</div>' +
       '<div class="dom-weight" style="color:' + dom.color + '">Study: ' + dom.days + '</div>' +
       '<ul class="dom-topics">' + dom.topics.map(t => '<li>' + t + '</li>').join('') + '</ul>';
+    // Summary
+    if (dom.summary) {
+      html += '<div class="dom-summary">' + dom.summary + '</div>';
+    }
+    // Key Study Notes
+    if (dom.keyNotes && dom.keyNotes.length) {
+      html += '<div class="collapsible-hdr">Key Study Notes</div><div class="collapsible-body">';
+      dom.keyNotes.forEach(n => { html += '<div class="key-note-item">' + n + '</div>'; });
+      html += '</div>';
+    }
     // Key Terms
     if (dom.keyTerms && dom.keyTerms.length) {
       html += '<div class="collapsible-hdr">Key Terms</div><div class="collapsible-body">';
