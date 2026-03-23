@@ -1604,6 +1604,11 @@ h1 span {
   <!-- PANEL: TRACKER -->
   <div class="panel" id="panel-tracker">
     <div class="stats-row" id="trkStats"></div>
+
+    <!-- Quiz Activity Log -->
+    <div id="quizLog" style="margin-bottom:24px"></div>
+
+    <h3 style="font-family:var(--font-mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px">Study Plan Checklist</h3>
     <div class="trk-grid" id="trkOut"></div>
     <div style="margin-top:12px;display:flex;gap:8px">
       <button class="btn btn-outline" id="btnResetTrk">RESET TRACKER</button>
@@ -7306,6 +7311,1466 @@ const QUESTIONS = [
   ],
   correct: 1,
   explain: "<b>B is correct.</b> The key difference is that REST's predictable endpoint-based structure aligns well with traditional security tools, while GraphQL's flexible query model requires purpose-built controls. Neither is inherently more secure, but they require different security approaches. <b>A is wrong</b> because age doesn't determine security. <b>C is wrong</b> because type safety helps prevent some errors but doesn't address authorization or abuse. <b>D is wrong</b> because they have meaningfully different security profiles requiring different controls."
+},
+// ============================================================
+// ADDITIONAL EXAM-STYLE QUESTIONS (120 questions, 15 per domain)
+// Aligned with ISC2 CISSP CBK 2024
+// ============================================================
+
+// ── DOMAIN 1 — Security & Risk Management (15 new) ──
+{
+  domain: 0, difficulty: "hard",
+  q: "An organization's board of directors asks the CISO to justify the information security budget. Which approach BEST demonstrates the value of security investments?",
+  opts: [
+    "A. Show the number of blocked attacks from firewall logs",
+    "B. Present risk reduction in financial terms using annualized loss expectancy before and after controls",
+    "C. Compare the security budget to industry average spending percentages",
+    "D. List all compliance frameworks the organization currently adheres to"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Expressing risk reduction in financial terms (ALE before minus ALE after controls) directly shows ROI to the board in language they understand. <b>A</b> shows activity but not business value. <b>C</b> is a benchmark but doesn't justify specific spending. <b>D</b> shows compliance but not risk-based value."
+},
+{
+  domain: 0, difficulty: "medium",
+  q: "During a risk assessment, the team identifies that a critical vendor has sole access to encryption keys for the organization's data. What risk treatment is MOST appropriate?",
+  opts: [
+    "A. Accept the risk since the vendor is contractually obligated to protect the keys",
+    "B. Avoid the risk by discontinuing the vendor relationship immediately",
+    "C. Mitigate the risk by implementing key escrow or split-knowledge key management",
+    "D. Transfer the risk by purchasing cyber insurance covering vendor-related breaches"
+  ],
+  correct: 2,
+  explain: "<b>C is correct.</b> Key escrow or split-knowledge ensures the organization retains access to its own data and eliminates single points of failure. <b>A</b> leaves a critical dependency unaddressed. <b>B</b> may be impractical and disruptive. <b>D</b> doesn't prevent the incident, only compensates financially."
+},
+{
+  domain: 0, difficulty: "hard",
+  q: "A multinational company must comply with GDPR, CCPA, and PIPEDA simultaneously. What is the MOST effective strategy for managing overlapping privacy requirements?",
+  opts: [
+    "A. Implement the strictest regulation's requirements universally across all operations",
+    "B. Create separate privacy programs for each jurisdiction to ensure precise compliance",
+    "C. Develop a unified privacy framework that maps controls to all applicable regulations with jurisdiction-specific supplements",
+    "D. Comply only with the regulation of the headquarters country and contractually require partners to handle local compliance"
+  ],
+  correct: 2,
+  explain: "<b>C is correct.</b> A unified framework with jurisdiction-specific supplements is the most efficient and comprehensive approach, ensuring no gaps while avoiding unnecessary duplication. <b>A</b> may over-apply certain controls and miss jurisdiction-specific nuances. <b>B</b> creates duplication and silos. <b>D</b> doesn't meet the organization's direct legal obligations."
+},
+{
+  domain: 0, difficulty: "medium",
+  q: "An organization discovers that a former employee retained access to cloud resources for 3 months after termination. Which governance failure is the ROOT cause?",
+  opts: [
+    "A. Lack of multi-factor authentication on cloud accounts",
+    "B. Failure to integrate HR offboarding with identity lifecycle management",
+    "C. Insufficient logging of cloud resource access",
+    "D. Absence of a data loss prevention solution"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> The root cause is a governance failure where HR termination processes are not linked to identity deprovisioning. <b>A</b> would add a layer of protection but wouldn't solve the access persistence. <b>C</b> is a detective control, not the root cause. <b>D</b> is irrelevant to access management."
+},
+{
+  domain: 0, difficulty: "hard",
+  q: "When establishing a security governance committee, which composition BEST ensures effective oversight?",
+  opts: [
+    "A. IT security team members only, as they have the deepest technical knowledge",
+    "B. Cross-functional representatives including legal, HR, IT, business units, and executive sponsorship",
+    "C. External consultants to ensure objectivity and independence",
+    "D. Internal audit team members to maintain separation of duties"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Effective security governance requires diverse perspectives from across the organization with executive sponsorship for authority. <b>A</b> lacks business context. <b>C</b> lacks organizational knowledge and ongoing commitment. <b>D</b> would conflict with audit independence requirements."
+},
+{
+  domain: 0, difficulty: "medium",
+  q: "A risk register shows 47 open risks, but stakeholders are overwhelmed and unable to prioritize. What should the risk manager do FIRST?",
+  opts: [
+    "A. Close the lowest-rated risks to reduce the list to a manageable size",
+    "B. Create a risk heat map categorizing risks by likelihood and impact to visualize priorities",
+    "C. Assign all risks to the CISO for centralized decision-making",
+    "D. Implement all recommended controls simultaneously to address everything at once"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> A heat map provides visual prioritization that stakeholders can quickly understand, enabling focused decision-making on the highest risks. <b>A</b> artificially removes risks without proper treatment. <b>C</b> creates a bottleneck and doesn't solve prioritization. <b>D</b> is impractical and doesn't prioritize."
+},
+{
+  domain: 0, difficulty: "hard",
+  q: "During contract negotiations with a SaaS provider, the vendor refuses to allow right-to-audit clauses. What is the BEST alternative assurance mechanism?",
+  opts: [
+    "A. Require the vendor to provide annual SOC 2 Type II reports from an independent auditor",
+    "B. Accept the vendor's self-assessment questionnaire as sufficient evidence",
+    "C. Rely on the vendor's marketing materials and customer testimonials",
+    "D. Perform penetration testing against the vendor's production environment"
+  ],
+  correct: 0,
+  explain: "<b>A is correct.</b> SOC 2 Type II reports from independent auditors provide credible assurance of control effectiveness over time and are the industry-standard alternative to direct audits. <b>B</b> lacks independence. <b>C</b> provides no security assurance. <b>D</b> would likely violate the vendor's terms and is not a governance control."
+},
+{
+  domain: 0, difficulty: "medium",
+  q: "An organization wants to implement a security awareness program. Which metric BEST measures program effectiveness?",
+  opts: [
+    "A. Number of employees who completed the annual training module",
+    "B. Reduction in successful phishing simulation click rates over consecutive quarters",
+    "C. Total budget spent on security awareness initiatives",
+    "D. Number of security policies published on the intranet"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Behavioral change measured through phishing simulations demonstrates actual effectiveness. <b>A</b> measures participation, not behavior change. <b>C</b> measures investment, not outcome. <b>D</b> measures availability of policies, not awareness."
+},
+{
+  domain: 0, difficulty: "hard",
+  q: "A company operating in the EU receives a lawful data access request from a US government agency under the CLOUD Act. The request potentially conflicts with GDPR. What should the organization do FIRST?",
+  opts: [
+    "A. Immediately comply with the US request to avoid legal penalties",
+    "B. Refuse the request entirely citing GDPR as the superseding regulation",
+    "C. Engage legal counsel to perform a conflict-of-laws analysis and assess both obligations",
+    "D. Anonymize all requested data before providing it to satisfy both requirements"
+  ],
+  correct: 2,
+  explain: "<b>C is correct.</b> Conflicting legal obligations require legal analysis to determine the appropriate course of action, potentially including requesting a court to quash or modify the order. <b>A</b> may violate GDPR. <b>B</b> may violate US law. <b>D</b> may not satisfy the legal request and anonymization may not be technically feasible for all data types."
+},
+{
+  domain: 0, difficulty: "medium",
+  q: "Which statement BEST describes the relationship between security policies, standards, guidelines, and procedures?",
+  opts: [
+    "A. Policies are optional; standards are mandatory; guidelines provide detailed steps; procedures are high-level",
+    "B. Policies state management intent; standards define mandatory requirements; guidelines are recommended practices; procedures are step-by-step instructions",
+    "C. All four document types carry equal authority and are interchangeable",
+    "D. Standards are created by external bodies; policies are internal; guidelines and procedures are the same thing"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> This is the correct hierarchy: policies (high-level, mandatory intent), standards (specific mandatory requirements), guidelines (recommended approaches), procedures (detailed step-by-step). <b>A</b> reverses several definitions. <b>C</b> ignores the hierarchy. <b>D</b> conflates external standards with internal standards."
+},
+{
+  domain: 0, difficulty: "hard",
+  q: "An organization's annual loss expectancy (ALE) for ransomware is $2M. A proposed control suite costs $800K annually and would reduce the ALE by 75%. What should the risk manager recommend?",
+  opts: [
+    "A. Implement the control suite because the cost is less than the original ALE",
+    "B. Implement the control suite because the net savings is $700K annually after control costs",
+    "C. Reject the control suite because the residual risk of $500K is still too high",
+    "D. Defer the decision until a more complete cost-benefit analysis includes intangible costs"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> ALE reduction = 75% of $2M = $1.5M. Control cost = $800K. Net savings = $1.5M - $800K = $700K. The control is financially justified. <b>A</b> uses wrong comparison (should compare cost to ALE reduction, not total ALE). <b>C</b> is incorrect—residual risk acceptance is a separate decision. <b>D</b> is unnecessary when quantitative analysis already shows clear value."
+},
+{
+  domain: 0, difficulty: "medium",
+  q: "Which concept requires that individuals be granted ONLY the minimum permissions necessary to perform their job functions?",
+  opts: [
+    "A. Separation of duties",
+    "B. Least privilege",
+    "C. Need to know",
+    "D. Job rotation"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Least privilege restricts access rights to the minimum required for the job. <b>A</b> divides critical tasks among multiple people. <b>C</b> restricts access to information based on job relevance (a subset of least privilege). <b>D</b> rotates personnel through different positions to prevent fraud."
+},
+{
+  domain: 0, difficulty: "hard",
+  q: "During a business impact analysis, the team discovers that the maximum tolerable downtime (MTD) for the payment processing system is 4 hours, but the current recovery time objective (RTO) is 12 hours. What does this gap indicate?",
+  opts: [
+    "A. The BIA findings are incorrect and should be recalculated",
+    "B. The organization has an unacceptable level of risk requiring immediate investment in recovery capabilities",
+    "C. The RTO should be adjusted to match the MTD by updating the documentation",
+    "D. The payment system should be classified as non-critical to resolve the gap"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> When RTO exceeds MTD, the organization cannot recover the system before unacceptable damage occurs. This represents a critical gap requiring investment. <b>A</b> assumes error without evidence. <b>C</b> changes documentation but not actual capability. <b>D</b> misclassifies a critical system to hide the problem."
+},
+{
+  domain: 0, difficulty: "medium",
+  q: "Which of the following is the PRIMARY purpose of a non-disclosure agreement (NDA) in personnel security?",
+  opts: [
+    "A. To prevent employees from leaving the organization",
+    "B. To legally bind individuals to protect confidential information from unauthorized disclosure",
+    "C. To ensure employees complete security awareness training",
+    "D. To define the employee's job responsibilities and access levels"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> NDAs create a legal obligation to protect confidential information. <b>A</b> is a non-compete, not an NDA. <b>C</b> is unrelated to NDAs. <b>D</b> describes a job description or access authorization form."
+},
+{
+  domain: 0, difficulty: "hard",
+  q: "A security team is implementing a risk management framework. Which NIST publication provides the MOST comprehensive guidance for integrating risk management into the system development lifecycle?",
+  opts: [
+    "A. NIST SP 800-53 (Security and Privacy Controls)",
+    "B. NIST SP 800-37 (Risk Management Framework)",
+    "C. NIST SP 800-30 (Guide for Conducting Risk Assessments)",
+    "D. NIST SP 800-61 (Computer Security Incident Handling Guide)"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> NIST SP 800-37 (RMF) provides the process for integrating security and risk management into the SDLC through categorize, select, implement, assess, authorize, and monitor steps. <b>A</b> is the control catalog. <b>C</b> focuses specifically on risk assessment methodology. <b>D</b> covers incident response."
+},
+
+// ── DOMAIN 2 — Asset Security (15 new) ──
+{
+  domain: 1, difficulty: "medium",
+  q: "An organization is migrating data to a cloud service provider. Who retains ultimate accountability for the protection of that data?",
+  opts: [
+    "A. The cloud service provider as the data processor",
+    "B. The data owner within the originating organization",
+    "C. The cloud security alliance as the governing body",
+    "D. The network administrator who configured the migration"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> The data owner always retains ultimate accountability regardless of where data is stored or processed. Accountability cannot be transferred, only tasks can be delegated. <b>A</b> is the processor, not the accountable party. <b>C</b> is a standards body. <b>D</b> is a technical implementer."
+},
+{
+  domain: 1, difficulty: "hard",
+  q: "A healthcare organization needs to share patient data with a research institution. What is the MOST appropriate method to protect patient privacy while enabling research?",
+  opts: [
+    "A. Encrypt the data using AES-256 and share the encryption keys separately",
+    "B. Apply data anonymization or de-identification techniques that meet HIPAA Safe Harbor requirements",
+    "C. Require the research institution to sign an NDA and share raw patient data",
+    "D. Allow access only through a VPN connection to the healthcare organization's database"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> De-identification under HIPAA Safe Harbor removes 18 identifiers, allowing data use for research while protecting privacy. <b>A</b> protects data in transit but the research institution still sees PHI when decrypted. <b>C</b> doesn't adequately protect PHI. <b>D</b> only secures the connection, not the data exposure."
+},
+{
+  domain: 1, difficulty: "medium",
+  q: "Which data state is MOST difficult to protect and requires the most specialized controls?",
+  opts: [
+    "A. Data at rest stored in an encrypted database",
+    "B. Data in transit over a TLS-encrypted connection",
+    "C. Data in use being processed in system memory",
+    "D. Data archived on offline backup tapes"
+  ],
+  correct: 2,
+  explain: "<b>C is correct.</b> Data in use must be decrypted in memory for processing, making it vulnerable to memory scraping, cold boot attacks, and side-channel attacks. Technologies like Intel SGX and confidential computing address this gap. <b>A, B, D</b> all have well-established encryption solutions."
+},
+{
+  domain: 1, difficulty: "hard",
+  q: "An organization discovers that sensitive intellectual property has been stored in a SaaS application without proper classification. What should be done FIRST?",
+  opts: [
+    "A. Immediately delete the data from the SaaS application",
+    "B. Identify and classify the data, then assess the risk of its current storage location",
+    "C. Block all access to the SaaS application until further notice",
+    "D. Report the incident to law enforcement as a potential data breach"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Before taking action, you must understand what data exists and its sensitivity level to make informed decisions. <b>A</b> may cause data loss and doesn't address the root cause. <b>C</b> disrupts business operations prematurely. <b>D</b> is premature—there's no evidence of a breach."
+},
+{
+  domain: 1, difficulty: "medium",
+  q: "Which role is responsible for implementing and maintaining the security controls that protect data on a day-to-day basis?",
+  opts: [
+    "A. Data owner",
+    "B. Data custodian",
+    "C. Data steward",
+    "D. Data subject"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> The data custodian handles day-to-day management including backups, access controls, and security configurations. <b>A</b> defines classification and authorized use. <b>C</b> ensures data quality and metadata management. <b>D</b> is the individual the data is about."
+},
+{
+  domain: 1, difficulty: "hard",
+  q: "A company implements a data retention policy requiring deletion of customer records after 7 years. Which challenge is MOST significant when enforcing this in a cloud environment?",
+  opts: [
+    "A. Cloud storage costs make retention financially impractical",
+    "B. Data remnants may persist across distributed storage, backups, caches, and replicas making complete deletion difficult to verify",
+    "C. Cloud providers refuse to delete data on customer request",
+    "D. Encryption makes it impossible to identify records that need deletion"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> In cloud environments, data is replicated across regions, cached at multiple layers, and included in backups, making complete verifiable deletion extremely challenging (crypto-shredding is one solution). <b>A</b> is a cost issue, not an enforcement challenge. <b>C</b> is contractually addressed. <b>D</b> is solvable with proper key management and metadata."
+},
+{
+  domain: 1, difficulty: "medium",
+  q: "What is the PRIMARY purpose of data classification?",
+  opts: [
+    "A. To determine the monetary value of each data asset for insurance purposes",
+    "B. To assign appropriate protection levels based on the sensitivity and value of information",
+    "C. To create an inventory of all hardware assets in the organization",
+    "D. To comply with the organization's acceptable use policy"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Data classification ensures that information receives protection commensurate with its sensitivity and value to the organization. <b>A</b> is asset valuation, not classification. <b>C</b> is asset inventory. <b>D</b> is a user behavior policy, not a classification purpose."
+},
+{
+  domain: 1, difficulty: "hard",
+  q: "An organization processes both PCI DSS cardholder data and HIPAA protected health information. How should the data governance program handle the overlapping compliance requirements?",
+  opts: [
+    "A. Create completely separate environments with no shared controls to avoid cross-contamination",
+    "B. Apply PCI DSS controls universally since they are more prescriptive than HIPAA",
+    "C. Map common controls across both frameworks and implement a unified control set that satisfies the stricter requirement for each control area",
+    "D. Outsource both data types to specialized third-party processors to eliminate the compliance burden"
+  ],
+  correct: 2,
+  explain: "<b>C is correct.</b> Control mapping identifies overlaps, and implementing the stricter requirement for each area ensures both standards are met efficiently. <b>A</b> is wasteful and operationally complex. <b>B</b> ignores HIPAA-specific requirements like patient rights. <b>D</b> doesn't eliminate the organization's compliance obligations."
+},
+{
+  domain: 1, difficulty: "medium",
+  q: "Which technique BEST protects sensitive data displayed on a customer service representative's screen from shoulder surfing?",
+  opts: [
+    "A. Full disk encryption on the workstation",
+    "B. Data masking that shows only the last four digits of sensitive fields",
+    "C. Requiring VPN connection for all customer service applications",
+    "D. Installing antivirus software on the workstation"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Data masking limits the visible sensitive data, reducing exposure to visual observation (shoulder surfing). <b>A</b> protects data at rest, not on-screen display. <b>C</b> protects data in transit. <b>D</b> protects against malware."
+},
+{
+  domain: 1, difficulty: "hard",
+  q: "When sanitizing solid-state drives (SSDs) containing top-secret data, why is traditional overwriting insufficient?",
+  opts: [
+    "A. SSDs are faster than HDDs, so the overwrite doesn't have time to complete",
+    "B. SSD wear-leveling and over-provisioning may leave data remnants in inaccessible areas that bypass standard overwrite commands",
+    "C. SSDs use a different file system that doesn't support overwrite operations",
+    "D. The encryption built into all SSDs prevents overwrite tools from accessing the data"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> SSD controllers manage wear-leveling by moving data to different physical cells, and over-provisioned areas are not accessible to OS-level commands. This means standard overwrite may miss data remnants. Cryptographic erasure or physical destruction is required. <b>A, C, D</b> are technically incorrect."
+},
+{
+  domain: 1, difficulty: "medium",
+  q: "Which concept ensures that data is not modified in an unauthorized or undetected manner?",
+  opts: [
+    "A. Confidentiality",
+    "B. Availability",
+    "C. Integrity",
+    "D. Non-repudiation"
+  ],
+  correct: 2,
+  explain: "<b>C is correct.</b> Integrity ensures data is not modified without authorization or detection, using controls like hashing, digital signatures, and access controls. <b>A</b> is about preventing unauthorized disclosure. <b>B</b> is about timely access. <b>D</b> is about proving authorship."
+},
+{
+  domain: 1, difficulty: "hard",
+  q: "A data privacy officer discovers that the organization's AI model was trained on customer data that was collected under a consent agreement limited to 'service delivery purposes.' What is the PRIMARY concern?",
+  opts: [
+    "A. The AI model's accuracy may be affected by biased training data",
+    "B. The use of data for AI training likely exceeds the scope of the original consent, creating a purpose limitation violation",
+    "C. Customer data in the training set may become outdated over time",
+    "D. The AI model might be less efficient if trained on limited data sets"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Purpose limitation (a core GDPR principle) requires that data collected for a specific purpose not be used for incompatible purposes without additional consent. AI model training goes beyond 'service delivery.' <b>A</b> is a fairness concern, not a privacy violation. <b>C, D</b> are operational concerns."
+},
+{
+  domain: 1, difficulty: "medium",
+  q: "What is the BEST approach for handling data remanence when decommissioning physical servers?",
+  opts: [
+    "A. Formatting the drives and reinstalling the operating system",
+    "B. Using cryptographic erasure followed by physical destruction for highest-sensitivity data",
+    "C. Removing the hard drives and storing them in a locked cabinet",
+    "D. Deleting all files and emptying the recycle bin"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Cryptographic erasure (destroying encryption keys for self-encrypting drives) combined with physical destruction provides the highest assurance. <b>A</b> only removes file system references, not actual data. <b>C</b> doesn't address the data on the drives. <b>D</b> is trivially recoverable."
+},
+{
+  domain: 1, difficulty: "hard",
+  q: "An organization implements a DLP solution that detects credit card numbers leaving the network via email. Which additional DLP capability would address the gap of data exfiltration through cloud storage uploads?",
+  opts: [
+    "A. Network DLP sensors at all egress points",
+    "B. Cloud access security broker (CASB) with inline DLP inspection",
+    "C. Endpoint DLP agents monitoring clipboard and print operations",
+    "D. Email gateway DLP with enhanced pattern matching"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> A CASB sits between users and cloud services, providing inline DLP inspection for cloud storage uploads. <b>A</b> may miss encrypted cloud traffic. <b>C</b> monitors endpoint activities but not cloud-specific uploads. <b>D</b> only covers email."
+},
+{
+  domain: 1, difficulty: "medium",
+  q: "Which security baseline practice ensures that data classifications are properly maintained over time?",
+  opts: [
+    "A. One-time classification during data creation",
+    "B. Periodic review and reclassification based on changing business context and regulatory requirements",
+    "C. Automatic classification based solely on file type and extension",
+    "D. Classification only when data is requested by external parties"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Data sensitivity can change over time; periodic review ensures classifications remain accurate. <b>A</b> doesn't account for changes. <b>C</b> is insufficient—sensitivity isn't determined by file type. <b>D</b> is reactive and leaves data unclassified for long periods."
+},
+
+// ── DOMAIN 3 — Security Architecture & Engineering (15 new) ──
+{
+  domain: 2, difficulty: "hard",
+  q: "An architect is designing a system that must maintain confidentiality of data even if the cloud provider's infrastructure is compromised. Which technology BEST addresses this requirement?",
+  opts: [
+    "A. Transport Layer Security (TLS) 1.3 for all communications",
+    "B. Confidential computing using hardware-based trusted execution environments (TEEs)",
+    "C. Full disk encryption on all virtual machine instances",
+    "D. Virtual private cloud (VPC) with network segmentation"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Confidential computing with TEEs (e.g., Intel SGX, AMD SEV) encrypts data in use within hardware-isolated enclaves, protecting it even from the cloud provider's privileged access. <b>A</b> only protects data in transit. <b>C</b> protects data at rest but not in use. <b>D</b> provides network isolation but not data protection."
+},
+{
+  domain: 2, difficulty: "medium",
+  q: "What is the PRIMARY security concern when implementing microservices architecture compared to a monolithic application?",
+  opts: [
+    "A. Microservices require more powerful servers than monolithic applications",
+    "B. The increased number of inter-service communication channels expands the attack surface significantly",
+    "C. Microservices cannot be deployed behind a web application firewall",
+    "D. Monolithic applications are inherently more secure than microservices"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Microservices communicate over the network, creating many more attack surfaces that need authentication, authorization, and encryption (east-west traffic). <b>A</b> is incorrect—microservices typically run on smaller instances. <b>C</b> is false. <b>D</b> is a generalization without basis."
+},
+{
+  domain: 2, difficulty: "hard",
+  q: "A security engineer needs to implement cryptographic protection for a system that must remain secure against future quantum computing attacks. Which approach is MOST appropriate?",
+  opts: [
+    "A. Double the key length of current RSA implementations to 8192 bits",
+    "B. Implement hybrid cryptography combining classical algorithms with NIST-approved post-quantum algorithms like ML-KEM (CRYSTALS-Kyber)",
+    "C. Switch entirely to elliptic curve cryptography as it is quantum-resistant",
+    "D. Use one-time pads for all communications to achieve perfect secrecy"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Hybrid cryptography provides current security via classical algorithms while adding quantum resistance through post-quantum algorithms. This is the recommended migration approach (NIST FIPS 203/204). <b>A</b> only marginally increases difficulty for quantum computers. <b>C</b> is wrong—ECC is also vulnerable to Shor's algorithm. <b>D</b> is impractical for most applications."
+},
+{
+  domain: 2, difficulty: "medium",
+  q: "Which security model enforces the principle that a subject cannot read data at a higher classification level or write data to a lower classification level?",
+  opts: [
+    "A. Biba Integrity Model",
+    "B. Bell-LaPadula Confidentiality Model",
+    "C. Clark-Wilson Integrity Model",
+    "D. Brewer-Nash (Chinese Wall) Model"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Bell-LaPadula's rules are 'no read up' (Simple Security) and 'no write down' (Star Property), enforcing confidentiality. <b>A</b> Biba is the opposite—'no read down, no write up' for integrity. <b>C</b> Clark-Wilson uses well-formed transactions and separation of duties. <b>D</b> Brewer-Nash prevents conflicts of interest."
+},
+{
+  domain: 2, difficulty: "hard",
+  q: "During a security architecture review, the team discovers that all internal services communicate using unencrypted HTTP within the Kubernetes cluster. The team argues that network-level encryption (VPC) makes service-level encryption unnecessary. What is the BEST response?",
+  opts: [
+    "A. Accept the argument since network-level encryption provides sufficient protection within a private cluster",
+    "B. Require mutual TLS (mTLS) between all services because defense-in-depth requires protection at multiple layers, and network segmentation alone doesn't prevent lateral movement by compromised containers",
+    "C. Implement a network intrusion detection system to monitor for malicious traffic within the cluster",
+    "D. Add IP-based access control lists between all services as a replacement for encryption"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Defense-in-depth requires encryption at the service layer. Compromised containers can sniff unencrypted traffic within the cluster. mTLS provides both encryption and mutual authentication. <b>A</b> violates defense-in-depth. <b>C</b> is detective, not preventive. <b>D</b> provides access control but not confidentiality."
+},
+{
+  domain: 2, difficulty: "medium",
+  q: "Which concept in the Common Criteria evaluation framework defines a set of security requirements for a category of products?",
+  opts: [
+    "A. Security Target (ST)",
+    "B. Protection Profile (PP)",
+    "C. Evaluation Assurance Level (EAL)",
+    "D. Target of Evaluation (TOE)"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> A Protection Profile defines security requirements for a category of products (e.g., firewalls, smart cards). <b>A</b> ST is vendor-specific claims about a particular product. <b>C</b> EAL is the depth of evaluation (1-7). <b>D</b> TOE is the specific product being evaluated."
+},
+{
+  domain: 2, difficulty: "hard",
+  q: "A system processes data classified at multiple sensitivity levels simultaneously. Which architecture BEST supports this requirement while preventing information leakage between levels?",
+  opts: [
+    "A. A single operating system with role-based access controls for each sensitivity level",
+    "B. A multi-level security (MLS) system with mandatory access controls enforced by a reference monitor that mediates all access",
+    "C. Separate physical systems for each sensitivity level with no network connections between them",
+    "D. Virtual machines for each level running on the same hypervisor with standard network isolation"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> MLS systems with MAC and a reference monitor (meeting the reference monitor concept: always invoked, tamper-proof, verifiable) are designed for multi-level processing. <b>A</b> lacks mandatory controls. <b>C</b> is air-gapped, not multi-level processing. <b>D</b> standard virtualization isn't certified for multi-level security."
+},
+{
+  domain: 2, difficulty: "medium",
+  q: "What is the PRIMARY purpose of a hardware security module (HSM) in a cryptographic infrastructure?",
+  opts: [
+    "A. To accelerate network encryption throughput",
+    "B. To securely generate, store, and manage cryptographic keys in tamper-resistant hardware",
+    "C. To replace software-based firewalls with hardware alternatives",
+    "D. To provide physical security for server rooms"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> HSMs provide a dedicated, tamper-resistant environment for key lifecycle management including generation, storage, and cryptographic operations. <b>A</b> is a secondary benefit. <b>C, D</b> are unrelated to HSM functionality."
+},
+{
+  domain: 2, difficulty: "hard",
+  q: "An organization is implementing a zero-trust architecture. Which principle is MOST fundamental to zero trust?",
+  opts: [
+    "A. All internal network traffic is trusted; only external traffic is verified",
+    "B. Never trust, always verify — every access request must be authenticated, authorized, and encrypted regardless of network location",
+    "C. Trust is established once during initial authentication and maintained throughout the session",
+    "D. Trust is based on the IP address of the requesting device"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Zero trust eliminates implicit trust based on network location. Every request is verified continuously. <b>A</b> is the traditional perimeter model, the opposite of zero trust. <b>C</b> describes session-based trust, not continuous verification. <b>D</b> relies on network location, which zero trust rejects."
+},
+{
+  domain: 2, difficulty: "medium",
+  q: "Which type of fire suppression system is MOST appropriate for a data center with active electronic equipment?",
+  opts: [
+    "A. Wet pipe sprinkler system",
+    "B. Clean agent gas suppression system (e.g., FM-200 or Novec 1230)",
+    "C. Dry chemical fire extinguishers",
+    "D. Foam-based suppression system"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Clean agent systems suppress fire without water damage to electronics and are safe for occupied spaces. <b>A</b> water damages electronics. <b>C</b> leaves residue that damages equipment. <b>D</b> is designed for liquid fuel fires, not electronics."
+},
+{
+  domain: 2, difficulty: "hard",
+  q: "A security architect is evaluating the use of homomorphic encryption for a cloud-based analytics platform. What is the PRIMARY advantage of this approach?",
+  opts: [
+    "A. It eliminates the need for access controls on the cloud platform",
+    "B. It allows computation on encrypted data without decrypting it, so the cloud provider never sees plaintext",
+    "C. It provides faster encryption than AES-256",
+    "D. It makes key management unnecessary since the data remains encrypted at all times"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Homomorphic encryption enables processing encrypted data without decryption, maintaining confidentiality throughout computation. <b>A</b> is wrong—access controls are still needed. <b>C</b> is wrong—homomorphic encryption is significantly slower. <b>D</b> is wrong—key management is still required."
+},
+{
+  domain: 2, difficulty: "medium",
+  q: "What vulnerability does the TOCTOU (Time of Check to Time of Use) attack exploit?",
+  opts: [
+    "A. Weak encryption algorithms that can be brute-forced quickly",
+    "B. A race condition where the state of a resource changes between the security check and its use",
+    "C. Unpatched software vulnerabilities in operating system kernels",
+    "D. Social engineering of system administrators to bypass access controls"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> TOCTOU is a race condition where an attacker changes a resource (e.g., a file) between the time it's verified and the time it's used. <b>A, C, D</b> are different vulnerability types."
+},
+{
+  domain: 2, difficulty: "hard",
+  q: "When implementing defense-in-depth for a web application, which combination represents layers from outermost to innermost?",
+  opts: [
+    "A. Database encryption → WAF → network firewall → input validation",
+    "B. Network firewall → WAF → input validation → parameterized queries → database encryption",
+    "C. Input validation → WAF → network firewall → database encryption",
+    "D. WAF → network firewall → database encryption → input validation"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Defense-in-depth layers from outermost to innermost: network perimeter (firewall) → application perimeter (WAF) → application logic (input validation) → data access (parameterized queries) → data storage (encryption). Each layer provides protection if outer layers are bypassed."
+},
+{
+  domain: 2, difficulty: "medium",
+  q: "Which architectural concept ensures that security mechanisms cannot be bypassed and are always invoked when needed?",
+  opts: [
+    "A. Least privilege",
+    "B. Complete mediation (reference monitor)",
+    "C. Economy of mechanism",
+    "D. Open design"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Complete mediation (a property of the reference monitor concept) ensures every access to every object is checked, with no bypass possible. <b>A</b> limits permissions. <b>C</b> keeps designs simple. <b>D</b> means security shouldn't depend on secrecy of design."
+},
+{
+  domain: 2, difficulty: "hard",
+  q: "A company is deploying IoT devices across manufacturing facilities. What is the GREATEST security challenge unique to IoT environments?",
+  opts: [
+    "A. IoT devices are too expensive to deploy at scale",
+    "B. Many IoT devices have constrained resources limiting the ability to implement standard cryptographic protocols, patching, and monitoring",
+    "C. IoT devices are not connected to networks, making them impossible to manage",
+    "D. IoT protocols are identical to standard IT protocols, requiring no special consideration"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> IoT devices often have limited CPU, memory, and power, preventing use of standard security agents, full TLS stacks, or regular patching. This requires lightweight security approaches. <b>A</b> IoT devices are typically inexpensive. <b>C</b> they are networked by definition. <b>D</b> IoT often uses specialized protocols (MQTT, CoAP, Zigbee)."
+},
+
+// ── DOMAIN 4 — Communication & Network Security (15 new) ──
+{
+  domain: 3, difficulty: "hard",
+  q: "An organization detects encrypted command-and-control (C2) traffic from an internal host to an external IP over port 443. Traditional firewalls cannot inspect the encrypted payload. Which technology would BEST detect this type of threat?",
+  opts: [
+    "A. Stateful packet inspection firewall with updated signatures",
+    "B. TLS inspection proxy combined with network traffic analysis that detects anomalous connection patterns such as beaconing intervals and JA3 fingerprints",
+    "C. Intrusion detection system monitoring only unencrypted traffic",
+    "D. DNS filtering that blocks known malicious domains"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> TLS inspection decrypts traffic for content analysis, while network traffic analysis (NTA) can detect C2 patterns like regular beaconing intervals and unusual JA3/JA3S fingerprints even in encrypted traffic. <b>A</b> can't inspect encrypted payloads. <b>C</b> misses encrypted traffic. <b>D</b> only works if C2 uses known domains, not IP-based connections."
+},
+{
+  domain: 3, difficulty: "medium",
+  q: "Which protocol provides the BEST security for DNS queries by encrypting them to prevent eavesdropping and manipulation?",
+  opts: [
+    "A. DNSSEC (DNS Security Extensions)",
+    "B. DNS over HTTPS (DoH) or DNS over TLS (DoT)",
+    "C. Standard DNS with longer TTL values",
+    "D. DNS with TCP instead of UDP"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> DoH and DoT encrypt DNS queries, preventing eavesdropping and manipulation in transit. <b>A</b> DNSSEC provides authentication and integrity but not confidentiality (queries are still in plaintext). <b>C</b> TTL doesn't affect security. <b>D</b> TCP provides reliable delivery but not encryption."
+},
+{
+  domain: 3, difficulty: "hard",
+  q: "A company implements network segmentation using VLANs. A penetration test reveals that an attacker on VLAN 10 can reach VLAN 20 using double-tagged 802.1Q frames. What is this attack called and how is it BEST prevented?",
+  opts: [
+    "A. ARP spoofing; prevented by implementing dynamic ARP inspection",
+    "B. VLAN hopping via double tagging; prevented by ensuring native VLANs are unused, dedicated, and tagged on trunk ports",
+    "C. MAC flooding; prevented by implementing port security",
+    "D. DNS poisoning; prevented by implementing DNSSEC"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> VLAN hopping via double-tagging exploits the native VLAN on trunk ports. The outer tag is stripped by the first switch (matching native VLAN), exposing the inner tag that routes to the target VLAN. Fix: don't use the default VLAN 1 as native, use a dedicated unused VLAN, and explicitly tag native VLANs on trunks."
+},
+{
+  domain: 3, difficulty: "medium",
+  q: "What is the PRIMARY advantage of implementing a software-defined perimeter (SDP) over traditional VPN for remote access?",
+  opts: [
+    "A. SDP provides faster network throughput than VPN",
+    "B. SDP authenticates and authorizes users before granting network visibility, making infrastructure invisible to unauthorized users",
+    "C. SDP eliminates the need for encryption in network communications",
+    "D. SDP is simpler to deploy than any VPN solution"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> SDP implements a 'deny all, permit by exception' model where services are hidden until the user is authenticated and authorized (dark cloud). Traditional VPN grants network access first, then relies on application-level controls. <b>A</b> isn't the primary advantage. <b>C</b> SDP still uses encryption. <b>D</b> complexity varies."
+},
+{
+  domain: 3, difficulty: "hard",
+  q: "An organization's SOC observes BGP route hijacking affecting traffic to their cloud-hosted services. Which mitigation is MOST effective?",
+  opts: [
+    "A. Implementing rate limiting on all border routers",
+    "B. Deploying RPKI (Resource Public Key Infrastructure) to validate route origin authenticity",
+    "C. Switching from BGP to OSPF for external routing",
+    "D. Adding more DNS servers to improve redundancy"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> RPKI allows networks to cryptographically verify that a BGP route announcement was authorized by the legitimate holder of the IP prefix, preventing unauthorized route announcements. <b>A</b> doesn't address routing integrity. <b>C</b> OSPF is an interior gateway protocol, not suitable for internet routing. <b>D</b> DNS redundancy doesn't address BGP hijacking."
+},
+{
+  domain: 3, difficulty: "medium",
+  q: "Which network device operates at Layer 7 of the OSI model and can make routing decisions based on application-level data such as HTTP headers?",
+  opts: [
+    "A. Layer 2 switch",
+    "B. Router",
+    "C. Application-layer gateway (proxy firewall)",
+    "D. Repeater"
+  ],
+  correct: 2,
+  explain: "<b>C is correct.</b> Application-layer gateways (proxy firewalls) operate at Layer 7, understanding application protocols and making decisions based on content. <b>A</b> operates at Layer 2. <b>B</b> operates at Layer 3. <b>D</b> operates at Layer 1."
+},
+{
+  domain: 3, difficulty: "hard",
+  q: "A wireless security audit reveals that the organization's WPA3-Enterprise deployment is vulnerable to dragonblood attacks. What is the root cause and appropriate remediation?",
+  opts: [
+    "A. WPA3 uses weak encryption; switch back to WPA2-Enterprise with TKIP",
+    "B. Implementation vulnerabilities in the Dragonfly/SAE handshake; apply vendor patches and ensure implementations follow the latest specification updates",
+    "C. WPA3 is inherently insecure and should be replaced with WEP",
+    "D. The vulnerability exists only in personal mode; enterprise mode is not affected"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Dragonblood attacks exploit implementation weaknesses in the SAE (Simultaneous Authentication of Equals) handshake, not the protocol's design. Vendor patches addressing timing and cache-based side-channel leaks resolve the issue. <b>A, C</b> recommend weaker protocols. <b>D</b> is incorrect—both modes can be affected by implementation flaws."
+},
+{
+  domain: 3, difficulty: "medium",
+  q: "What is the PRIMARY security benefit of implementing 802.1X port-based network access control?",
+  opts: [
+    "A. It encrypts all traffic on the local network",
+    "B. It ensures that only authenticated and authorized devices can access the network by requiring authentication before granting port access",
+    "C. It prevents denial-of-service attacks against network switches",
+    "D. It replaces the need for firewalls on the network"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> 802.1X authenticates devices before granting network access using EAP and a RADIUS backend. Unauthorized devices are placed on a restricted VLAN or denied access. <b>A</b> 802.1X handles authentication, not encryption (though it can enable dynamic key assignment). <b>C, D</b> are not primary functions."
+},
+{
+  domain: 3, difficulty: "hard",
+  q: "An organization needs to securely connect two data centers over the internet. Which VPN configuration provides the BEST combination of security and performance?",
+  opts: [
+    "A. SSL VPN using a web browser client",
+    "B. IPsec tunnel mode with IKEv2, AES-256-GCM encryption, and perfect forward secrecy using ECDH",
+    "C. PPTP VPN with MS-CHAPv2 authentication",
+    "D. L2TP without IPsec encryption"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> IPsec tunnel mode encrypts the entire original packet (including headers), IKEv2 provides improved negotiation, AES-256-GCM provides authenticated encryption, and PFS with ECDH ensures compromised long-term keys don't expose past sessions. <b>A</b> SSL VPN is better for remote access, not site-to-site. <b>C</b> PPTP has known vulnerabilities. <b>D</b> L2TP without IPsec provides no encryption."
+},
+{
+  domain: 3, difficulty: "medium",
+  q: "What is the PRIMARY difference between an intrusion detection system (IDS) and an intrusion prevention system (IPS)?",
+  opts: [
+    "A. IDS uses signatures while IPS uses anomaly detection",
+    "B. IDS monitors and alerts on suspicious activity while IPS can actively block malicious traffic inline",
+    "C. IDS operates at the network level while IPS operates at the application level",
+    "D. IDS is hardware-based while IPS is software-based"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> The key difference is placement and action: IDS passively monitors (out of band) and alerts, while IPS sits inline and can actively block traffic. Both can use signature and anomaly detection methods. <b>A, C, D</b> are incorrect distinctions."
+},
+{
+  domain: 3, difficulty: "hard",
+  q: "An organization implements microsegmentation in their data center. A developer reports that a legitimate service cannot communicate with another service after the implementation. What is the MOST likely cause?",
+  opts: [
+    "A. Microsegmentation encrypted the traffic and the receiving service cannot decrypt it",
+    "B. The zero-trust policies are too restrictive and the required east-west traffic flow was not explicitly allowed in the segmentation policy",
+    "C. Microsegmentation only works for north-south traffic, not east-west",
+    "D. The developer needs to reinstall the application to be compatible with microsegmentation"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Microsegmentation implements deny-by-default policies for east-west (lateral) traffic. Legitimate flows must be explicitly allowed. Missing allow rules for required service-to-service communication is the most common deployment issue. <b>A</b> microsegmentation controls access, not necessarily encryption. <b>C</b> it specifically targets east-west traffic. <b>D</b> applications don't need modification."
+},
+{
+  domain: 3, difficulty: "medium",
+  q: "Which attack involves an attacker sending gratuitous ARP replies to associate their MAC address with the IP address of the default gateway?",
+  opts: [
+    "A. DNS spoofing",
+    "B. ARP poisoning/spoofing",
+    "C. SYN flooding",
+    "D. ICMP redirect attack"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> ARP poisoning sends false ARP replies to associate the attacker's MAC address with the gateway's IP, enabling man-in-the-middle attacks. <b>A</b> targets DNS resolution. <b>C</b> is a denial-of-service attack. <b>D</b> manipulates routing via ICMP messages."
+},
+{
+  domain: 3, difficulty: "hard",
+  q: "An organization's network team proposes implementing SASE (Secure Access Service Edge). What is the CORE architectural principle of SASE?",
+  opts: [
+    "A. Centralizing all security controls in the on-premises data center",
+    "B. Converging networking (SD-WAN) and security (SWG, CASB, ZTNA, FWaaS) into a unified cloud-delivered service at the edge",
+    "C. Replacing all physical network equipment with virtual equivalents",
+    "D. Implementing a single vendor solution for all IT needs including servers and databases"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> SASE (coined by Gartner) converges WAN capabilities with network security functions (SWG, CASB, ZTNA, FWaaS) delivered as a cloud service, moving security to the edge where users and data are. <b>A</b> is the opposite—SASE moves away from centralized on-premises. <b>C</b> is virtualization. <b>D</b> overstates the scope."
+},
+{
+  domain: 3, difficulty: "medium",
+  q: "What security protocol replaced SSL for securing web communications and what is its CURRENT recommended version?",
+  opts: [
+    "A. SSH version 2",
+    "B. TLS version 1.3",
+    "C. IPsec version 3",
+    "D. HTTPS version 2"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> TLS (Transport Layer Security) replaced SSL. TLS 1.3 (RFC 8446) is the current recommended version, removing weak ciphers, reducing handshake latency, and mandating perfect forward secrecy. <b>A</b> SSH is for remote terminal access. <b>C</b> IPsec is for network-layer VPN. <b>D</b> HTTPS uses TLS; version 2 refers to HTTP/2."
+},
+{
+  domain: 3, difficulty: "hard",
+  q: "During incident response, the team discovers that an attacker exploited a Server-Side Request Forgery (SSRF) vulnerability in a web application to access the cloud instance metadata service at 169.254.169.254, obtaining temporary IAM credentials. What network control would have BEST prevented this attack?",
+  opts: [
+    "A. A web application firewall (WAF) with SSRF-specific rules",
+    "B. Network-level blocking of instance metadata service access from web application containers combined with IMDSv2 requiring session tokens",
+    "C. Enabling VPC flow logs for the web application subnet",
+    "D. Implementing DNS filtering to block access to internal IP ranges"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Blocking metadata service access at the network level (iptables/security groups) and enforcing IMDSv2 (which requires PUT-based session tokens that SSRF typically can't generate) together prevent this common cloud attack vector. <b>A</b> helps but may not catch all SSRF patterns. <b>C</b> is detective only. <b>D</b> may block DNS but not direct IP access."
+},
+
+// ── DOMAIN 5 — Identity & Access Management (15 new) ──
+{
+  domain: 4, difficulty: "hard",
+  q: "An organization implements FIDO2/WebAuthn for passwordless authentication. What is the PRIMARY security advantage over traditional password-based MFA?",
+  opts: [
+    "A. FIDO2 requires biometric authentication for every login",
+    "B. FIDO2 uses public-key cryptography bound to the origin (website), making it immune to phishing, credential stuffing, and replay attacks",
+    "C. FIDO2 stores credentials in a centralized database that is easier to protect",
+    "D. FIDO2 encrypts the user's password before sending it to the server"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> FIDO2/WebAuthn creates origin-bound key pairs—the private key never leaves the authenticator, and the authentication is cryptographically bound to the specific website origin, making phishing impossible. <b>A</b> biometrics are optional (used for local authenticator unlock). <b>C</b> credentials are decentralized. <b>D</b> FIDO2 eliminates passwords entirely."
+},
+{
+  domain: 4, difficulty: "medium",
+  q: "Which access control model makes decisions based on attributes of the subject, resource, action, and environment rather than pre-assigned roles?",
+  opts: [
+    "A. Role-Based Access Control (RBAC)",
+    "B. Attribute-Based Access Control (ABAC)",
+    "C. Mandatory Access Control (MAC)",
+    "D. Discretionary Access Control (DAC)"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> ABAC evaluates attributes (user department, resource classification, time of day, location, etc.) dynamically to make access decisions, providing fine-grained context-aware control. <b>A</b> uses predefined roles. <b>C</b> uses labels/classifications. <b>D</b> lets resource owners decide."
+},
+{
+  domain: 4, difficulty: "hard",
+  q: "A company's SSO implementation using SAML 2.0 is being targeted by XML Signature Wrapping attacks. What is this attack and how should it be mitigated?",
+  opts: [
+    "A. The attack exploits weak passwords; mitigate by enforcing password complexity",
+    "B. The attacker manipulates the XML structure to move the signed element and inject a forged assertion that the service provider processes instead of the signed one; mitigate with strict XML schema validation and signature verification libraries that prevent reference manipulation",
+    "C. The attack intercepts SAML tokens in transit; mitigate by implementing TLS",
+    "D. The attack brute-forces the signing key; mitigate by using longer keys"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> XML Signature Wrapping moves the legitimately signed XML element to a non-processed location and inserts a forged element in its place. The signature validates (against the moved element) but the SP processes the forged one. Strict schema validation and proper XML canonicalization prevent this. <b>A, C, D</b> describe different attack types."
+},
+{
+  domain: 4, difficulty: "medium",
+  q: "What is the MOST important security consideration when implementing a Privileged Access Management (PAM) solution?",
+  opts: [
+    "A. Ensuring all users have privileged access for productivity",
+    "B. Implementing just-in-time (JIT) access with session recording, automated credential rotation, and approval workflows for privileged operations",
+    "C. Storing all privileged credentials in an encrypted spreadsheet",
+    "D. Sharing privileged accounts among team members to reduce license costs"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> PAM best practices include JIT access (privileges granted only when needed and auto-revoked), session recording (accountability), credential rotation (reducing exposure), and approval workflows (authorization). <b>A</b> violates least privilege. <b>C</b> is not enterprise-grade. <b>D</b> eliminates accountability."
+},
+{
+  domain: 4, difficulty: "hard",
+  q: "An identity team is evaluating whether to use OAuth 2.0 or OpenID Connect (OIDC) for a new application. What is the CORRECT relationship between these protocols?",
+  opts: [
+    "A. They are competing protocols that cannot be used together",
+    "B. OIDC is an identity layer built on top of OAuth 2.0 — OAuth 2.0 handles authorization (delegated access), while OIDC adds authentication (identity verification) via ID tokens",
+    "C. OAuth 2.0 is newer than OIDC and provides more security features",
+    "D. Both protocols provide authentication; OIDC is simply the newer version of OAuth"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> OAuth 2.0 is an authorization framework (granting access to resources). OIDC extends it with an authentication layer, adding ID tokens (JWTs) that contain identity claims. They work together, not as alternatives. <b>A</b> they are complementary. <b>C</b> OAuth 2.0 is older. <b>D</b> OAuth 2.0 is specifically NOT an authentication protocol."
+},
+{
+  domain: 4, difficulty: "medium",
+  q: "An organization implements biometric authentication for physical access. Which metric measures the point where false acceptance rate (FAR) equals false rejection rate (FRR)?",
+  opts: [
+    "A. Failure to Enroll Rate (FER)",
+    "B. Crossover Error Rate (CER) / Equal Error Rate (EER)",
+    "C. Throughput Rate",
+    "D. True Acceptance Rate"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> CER/EER is the point where FAR equals FRR. Lower CER indicates a more accurate biometric system. It's the standard metric for comparing biometric systems. <b>A</b> FER measures enrollment failures. <b>C</b> measures processing speed. <b>D</b> is not a standard biometric metric."
+},
+{
+  domain: 4, difficulty: "hard",
+  q: "A company's identity federation with a partner organization uses SAML. An employee's account is terminated at the partner, but the employee can still access services for 24 hours using their existing SAML assertion. What control addresses this gap?",
+  opts: [
+    "A. Implementing longer SAML assertion validity periods",
+    "B. Reducing SAML assertion lifetime to minutes, implementing real-time attribute verification with the IdP, and using SAML artifact binding for backchannel validation",
+    "C. Storing a copy of all partner employee records locally",
+    "D. Requiring partners to notify by email before terminating any accounts"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Short-lived assertions reduce the window of unauthorized access. Artifact binding requires the SP to contact the IdP in real-time to resolve the assertion, ensuring revoked accounts are immediately detected. <b>A</b> makes the problem worse. <b>C</b> creates data duplication issues. <b>D</b> is a manual process prone to delays."
+},
+{
+  domain: 4, difficulty: "medium",
+  q: "Which type of access control is implemented when the operating system enforces security labels and classifications that individual users cannot override?",
+  opts: [
+    "A. Discretionary Access Control (DAC)",
+    "B. Mandatory Access Control (MAC)",
+    "C. Role-Based Access Control (RBAC)",
+    "D. Rule-Based Access Control"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> MAC uses system-enforced labels (e.g., Top Secret, Secret, Confidential) that users cannot change. The system makes access decisions based on the subject's clearance and the object's classification. <b>A</b> DAC lets owners set permissions. <b>C</b> uses job functions. <b>D</b> uses conditional rules."
+},
+{
+  domain: 4, difficulty: "hard",
+  q: "An organization discovers that a service account with Domain Admin privileges has not had its password changed in 3 years and is used by 12 different applications. What is the BEST remediation approach?",
+  opts: [
+    "A. Change the password immediately and update all 12 applications at the same time",
+    "B. Inventory all dependencies, create individual service accounts with minimum required privileges for each application, implement automated credential rotation, and decommission the shared account",
+    "C. Add MFA to the service account to compensate for the static password",
+    "D. Accept the risk since changing the account could cause application outages"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> The proper approach is to eliminate the shared, over-privileged account by creating purpose-specific accounts with least privilege and automated rotation. This addresses excessive privilege, credential staleness, and shared account risks. <b>A</b> changes the password but doesn't fix the fundamental issues. <b>C</b> MFA on service accounts is often impractical. <b>D</b> accepts excessive risk."
+},
+{
+  domain: 4, difficulty: "medium",
+  q: "What is the PRIMARY purpose of an identity proofing process?",
+  opts: [
+    "A. To verify that a person logging in is the same person who registered the account",
+    "B. To verify and validate that a person is who they claim to be before issuing credentials for the first time",
+    "C. To reset a forgotten password using security questions",
+    "D. To authorize access to specific resources after authentication"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Identity proofing occurs during initial enrollment to establish that the claimed identity is real and belongs to the applicant (using documents, biometrics, knowledge). <b>A</b> describes authentication. <b>C</b> is account recovery. <b>D</b> is authorization."
+},
+{
+  domain: 4, difficulty: "hard",
+  q: "An organization needs to implement continuous adaptive risk and trust assessment (CARTA) for their applications. Which capability is ESSENTIAL for this approach?",
+  opts: [
+    "A. Annual access reviews that certify all user permissions",
+    "B. Real-time analysis of user behavior, device posture, and context signals to dynamically adjust authentication requirements and access levels during active sessions",
+    "C. Static role assignments that don't change during a user session",
+    "D. Requiring all users to re-authenticate every 15 minutes regardless of behavior"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> CARTA (Gartner concept) continuously evaluates risk signals during sessions—not just at login—and dynamically adjusts trust levels. If risk increases (unusual behavior, device change), access can be restricted or step-up authentication required. <b>A</b> is periodic, not continuous. <b>C</b> is static. <b>D</b> is periodic re-auth without risk context."
+},
+{
+  domain: 4, difficulty: "medium",
+  q: "In Kerberos authentication, what is the purpose of the Ticket Granting Ticket (TGT)?",
+  opts: [
+    "A. To directly authenticate the user to application servers",
+    "B. To allow the user to request service tickets from the Ticket Granting Service (TGS) without re-entering credentials",
+    "C. To encrypt all data transmitted between the client and server",
+    "D. To store the user's password in encrypted form"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> After initial authentication with the AS (Authentication Server), the TGT allows the user to request service tickets from the TGS without re-entering their password—enabling single sign-on. <b>A</b> service tickets do that. <b>C</b> session keys handle encryption. <b>D</b> the TGT doesn't store passwords."
+},
+{
+  domain: 4, difficulty: "hard",
+  q: "What is the MOST significant risk of implementing single sign-on (SSO) without compensating controls?",
+  opts: [
+    "A. Users will forget their SSO password more frequently",
+    "B. Compromise of the SSO credential provides access to all federated applications, creating a single point of failure for authentication",
+    "C. SSO reduces the number of help desk calls, leading to IT staff reductions",
+    "D. SSO is incompatible with multi-factor authentication"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> SSO creates a single point of failure—one compromised credential gives access to everything. This must be compensated with strong MFA, session monitoring, and anomaly detection. <b>A</b> is unlikely; SSO reduces password fatigue. <b>C</b> is an operational benefit, not a risk. <b>D</b> SSO works well with MFA."
+},
+{
+  domain: 4, difficulty: "medium",
+  q: "Which access control principle requires that no single individual can complete a critical transaction alone?",
+  opts: [
+    "A. Least privilege",
+    "B. Separation of duties",
+    "C. Need to know",
+    "D. Dual control"
+  ],
+  correct: 3,
+  explain: "<b>D is correct.</b> Dual control requires two or more individuals to act together to complete a critical operation (e.g., two keys to open a vault). <b>A</b> limits permissions to the minimum needed. <b>B</b> divides a process so no one person controls all steps but each step can be completed individually. <b>C</b> restricts access based on job relevance. The distinction: separation of duties divides sequential steps; dual control requires simultaneous participation."
+},
+{
+  domain: 4, difficulty: "hard",
+  q: "An organization wants to implement passwordless authentication across all applications. Which approach provides the STRONGEST security while maintaining usability?",
+  opts: [
+    "A. SMS-based one-time passwords sent to the user's phone",
+    "B. Platform authenticators (device biometrics) registered via FIDO2/WebAuthn with device-bound passkeys synced through the user's platform account",
+    "C. Magic links sent to the user's email address",
+    "D. Time-based one-time passwords (TOTP) from an authenticator app"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> FIDO2 passkeys provide phishing-resistant, cryptographic authentication with excellent usability (fingerprint or face unlock). Synced passkeys maintain usability across devices. <b>A</b> SMS is vulnerable to SIM swapping and interception. <b>C</b> email is a weaker factor. <b>D</b> TOTP still requires a shared secret and is phishable."
+},
+
+// ── DOMAIN 6 — Security Assessment & Testing (15 new) ──
+{
+  domain: 5, difficulty: "hard",
+  q: "During a penetration test, the tester discovers a blind SQL injection vulnerability. The application doesn't display database errors but responds differently for true/false conditions. Which technique is MOST appropriate for extracting data?",
+  opts: [
+    "A. Error-based SQL injection using UNION SELECT statements",
+    "B. Boolean-based blind SQL injection using conditional responses, supplemented by time-based techniques for confirmation",
+    "C. Running a port scan against the database server directly",
+    "D. Using social engineering to obtain the database credentials"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Boolean-based blind SQLi infers data by asking true/false questions and observing response differences. Time-based techniques (e.g., IF condition THEN SLEEP(5)) confirm the vulnerability when response differences are subtle. <b>A</b> requires error messages which aren't shown. <b>C, D</b> are different attack types."
+},
+{
+  domain: 5, difficulty: "medium",
+  q: "What is the PRIMARY difference between a vulnerability assessment and a penetration test?",
+  opts: [
+    "A. Vulnerability assessments are automated while penetration tests are always manual",
+    "B. Vulnerability assessments identify and classify weaknesses without exploitation, while penetration tests actively exploit vulnerabilities to demonstrate real-world impact",
+    "C. Vulnerability assessments are more thorough than penetration tests",
+    "D. Penetration tests only check network devices while vulnerability assessments check applications"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Vulnerability assessments find and categorize weaknesses (breadth), while penetration tests exploit them to prove impact and test detection/response (depth). <b>A</b> both can use automated and manual techniques. <b>C, D</b> are incorrect generalizations."
+},
+{
+  domain: 5, difficulty: "hard",
+  q: "An organization wants to implement continuous security testing in their CI/CD pipeline. Which combination of tools provides the MOST comprehensive coverage?",
+  opts: [
+    "A. Only running unit tests with security-related test cases",
+    "B. SAST (static analysis) in the build phase, SCA (software composition analysis) for dependencies, DAST (dynamic testing) against staging, and container image scanning before deployment",
+    "C. Running a full penetration test before every deployment",
+    "D. Code review by a single senior developer before each merge"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> A comprehensive DevSecOps pipeline includes: SAST for code vulnerabilities, SCA for vulnerable dependencies, DAST for runtime issues, and container scanning for image vulnerabilities. Together they cover code, dependencies, runtime, and infrastructure. <b>A</b> is incomplete. <b>C</b> is too slow for CI/CD. <b>D</b> is a single point of failure."
+},
+{
+  domain: 5, difficulty: "medium",
+  q: "What type of audit finding indicates a control deficiency that could reasonably lead to a material misstatement if not remediated?",
+  opts: [
+    "A. Observation",
+    "B. Significant deficiency",
+    "C. Advisory comment",
+    "D. Best practice recommendation"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> A significant deficiency is a control weakness important enough to merit attention because it could lead to material misstatement. A material weakness is even more severe (reasonable possibility of material misstatement). <b>A, C, D</b> are less severe finding categories."
+},
+{
+  domain: 5, difficulty: "hard",
+  q: "A SOC 2 Type II report covers a 12-month period ending December 31. An auditor discovers that a critical control was not operating effectively during October and November but was remediated in December. How should this be reported?",
+  opts: [
+    "A. The control should be reported as effective since it was working at the end of the audit period",
+    "B. The report should include a qualified opinion noting the control exception during October-November with the remediation in December",
+    "C. The auditor should extend the audit period to allow more time for the control to demonstrate effectiveness",
+    "D. The finding should be excluded since the control was ultimately remediated"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> SOC 2 Type II evaluates control effectiveness over the entire period, not just at a point in time. The two-month gap must be disclosed as an exception even though it was remediated. <b>A</b> ignores the period of ineffectiveness. <b>C</b> extending doesn't erase the gap. <b>D</b> suppressing findings violates audit standards."
+},
+{
+  domain: 5, difficulty: "medium",
+  q: "Which testing methodology gives the tester NO prior knowledge of the target systems?",
+  opts: [
+    "A. White box testing",
+    "B. Black box testing",
+    "C. Gray box testing",
+    "D. Regression testing"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Black box testing simulates an external attacker with no insider knowledge. <b>A</b> white box provides full knowledge (source code, architecture). <b>C</b> gray box provides partial knowledge. <b>D</b> regression testing verifies that changes don't break existing functionality."
+},
+{
+  domain: 5, difficulty: "hard",
+  q: "An organization's SIEM generates 50,000 alerts per day, and the SOC team can only investigate 200. What approach BEST addresses this alert fatigue problem?",
+  opts: [
+    "A. Hire more SOC analysts to process all 50,000 alerts",
+    "B. Implement SOAR (Security Orchestration, Automation, and Response) to automate triage of common alert types, enrich alerts with threat intelligence, and prioritize based on asset criticality and kill chain stage",
+    "C. Reduce the number of detection rules until alerts drop to 200 per day",
+    "D. Forward all alerts to email and let analysts review them offline"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> SOAR automates repetitive triage tasks, enriches alerts with context (threat intel, asset value), and prioritizes by business impact, dramatically improving the signal-to-noise ratio. <b>A</b> doesn't scale. <b>C</b> creates blind spots. <b>D</b> doesn't improve efficiency."
+},
+{
+  domain: 5, difficulty: "medium",
+  q: "What is the PRIMARY purpose of a log review as a security assessment technique?",
+  opts: [
+    "A. To verify that logging systems have sufficient storage capacity",
+    "B. To detect anomalous activities, policy violations, and unauthorized access attempts by analyzing recorded events",
+    "C. To ensure log files are formatted according to industry standards",
+    "D. To generate compliance reports for external auditors"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Log review identifies security-relevant events including unauthorized access, policy violations, and anomalous behavior patterns. <b>A</b> is a capacity management concern. <b>C</b> is a standardization concern. <b>D</b> is a use of logs, not the primary purpose of review."
+},
+{
+  domain: 5, difficulty: "hard",
+  q: "A company conducts a red team exercise. The red team successfully compromises a domain controller using a Kerberoasting attack. Which defensive control would have BEST prevented or detected this attack?",
+  opts: [
+    "A. Implementing network segmentation between workstations and domain controllers",
+    "B. Using Group Managed Service Accounts (gMSA) with automatically rotated 120+ character passwords and monitoring for anomalous TGS requests",
+    "C. Deploying antivirus on all endpoints",
+    "D. Requiring all users to change passwords every 30 days"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Kerberoasting requests service tickets for accounts with SPNs and cracks them offline. gMSAs have long, auto-rotated passwords that are computationally infeasible to crack. Monitoring for unusual volume of TGS requests detects the attack. <b>A</b> doesn't prevent Kerberoasting (it uses normal Kerberos). <b>C</b> won't detect offline cracking. <b>D</b> short rotation doesn't prevent offline attacks on strong tickets."
+},
+{
+  domain: 5, difficulty: "medium",
+  q: "Which type of security assessment evaluates whether an organization's security controls align with a specific framework or regulation?",
+  opts: [
+    "A. Penetration test",
+    "B. Compliance audit",
+    "C. Bug bounty program",
+    "D. Threat modeling exercise"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Compliance audits evaluate controls against specific regulatory or framework requirements (e.g., PCI DSS, HIPAA, ISO 27001). <b>A</b> tests exploitability. <b>C</b> crowdsources vulnerability discovery. <b>D</b> identifies threats and design weaknesses."
+},
+{
+  domain: 5, difficulty: "hard",
+  q: "During code review, a security tester finds that the application uses Math.random() in JavaScript to generate session tokens. Why is this a vulnerability?",
+  opts: [
+    "A. Math.random() is too slow for production use",
+    "B. Math.random() uses a pseudorandom number generator (PRNG) that is not cryptographically secure — its output can be predicted by observing previous values, allowing session hijacking",
+    "C. Math.random() only generates integers, not the strings needed for tokens",
+    "D. Math.random() is deprecated in modern JavaScript"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Math.random() uses a non-cryptographic PRNG (typically xorshift128+) whose internal state can be reconstructed from observed outputs, allowing prediction of future tokens. Crypto.getRandomValues() or server-side CSPRNGs should be used instead. <b>A</b> performance isn't the concern. <b>C</b> it generates floats, easily converted to strings. <b>D</b> it's not deprecated."
+},
+{
+  domain: 5, difficulty: "medium",
+  q: "What is the PRIMARY benefit of implementing a bug bounty program?",
+  opts: [
+    "A. It eliminates the need for internal security testing",
+    "B. It leverages diverse external security researchers to find vulnerabilities that internal teams may miss, providing continuous testing coverage",
+    "C. It guarantees that all vulnerabilities will be found before attackers exploit them",
+    "D. It replaces the need for a security operations center"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Bug bounties provide diverse perspectives and continuous testing from skilled external researchers, complementing internal testing. <b>A</b> it supplements, not replaces, internal testing. <b>C</b> no guarantee of completeness. <b>D</b> bug bounties don't replace operational security."
+},
+{
+  domain: 5, difficulty: "hard",
+  q: "An auditor reviewing the organization's disaster recovery plan discovers that the last full test was conducted 18 months ago and only included a tabletop exercise. What is the MOST significant concern?",
+  opts: [
+    "A. Tabletop exercises are not considered valid DR testing methods",
+    "B. The DR plan has not been validated through a functional test (parallel or full-interruption) to verify actual recovery procedures work, and the 18-month gap means changes to infrastructure may have invalidated the plan",
+    "C. DR tests should only be conducted by external consultants",
+    "D. The auditor should immediately trigger a full DR test during the audit"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Tabletop exercises test decision-making but don't validate technical recovery procedures. Without functional testing, there's no assurance that systems can actually be recovered. The 18-month gap likely means infrastructure changes have occurred that aren't reflected in the plan. <b>A</b> tabletops are valid but insufficient alone. <b>C, D</b> are incorrect."
+},
+{
+  domain: 5, difficulty: "medium",
+  q: "Which metric BEST measures the effectiveness of a vulnerability management program?",
+  opts: [
+    "A. Total number of vulnerabilities discovered",
+    "B. Mean time to remediate (MTTR) critical and high-severity vulnerabilities",
+    "C. Number of vulnerability scans conducted per month",
+    "D. Total cost of the vulnerability scanning tools"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> MTTR for critical/high vulnerabilities measures how quickly the organization reduces actual risk. <b>A</b> shows discovery capability but not remediation. <b>C</b> measures activity, not effectiveness. <b>D</b> measures cost, not outcomes."
+},
+{
+  domain: 5, difficulty: "hard",
+  q: "An organization performs threat modeling using STRIDE. Which threat category does session hijacking fall under?",
+  opts: [
+    "A. Spoofing (impersonating a user or system)",
+    "B. Tampering (modifying data in transit)",
+    "C. Information Disclosure (exposing information to unauthorized parties)",
+    "D. Elevation of Privilege (gaining unauthorized access to higher-level functions)"
+  ],
+  correct: 0,
+  explain: "<b>A is correct.</b> Session hijacking allows an attacker to impersonate a legitimate user by stealing their session token, which is Spoofing in STRIDE. <b>B</b> Tampering involves modifying data. <b>C</b> Information Disclosure is about data leakage. <b>D</b> Elevation of Privilege is about gaining higher access rights."
+},
+
+// ── DOMAIN 7 — Security Operations (15 new) ──
+{
+  domain: 6, difficulty: "hard",
+  q: "During incident response, the team needs to image a live system that may contain volatile evidence. What is the correct order for volatile data collection?",
+  opts: [
+    "A. Hard drive → swap space → network connections → memory",
+    "B. CPU registers/cache → memory → network state → running processes → disk",
+    "C. Disk → memory → CPU registers → network connections",
+    "D. Network connections → running processes → disk → memory"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> The RFC 3227 order of volatility (most to least volatile): CPU registers/cache → memory → network state → running processes → disk. Most volatile data must be captured first as it changes or is lost most quickly. <b>A, C, D</b> violate the order of volatility."
+},
+{
+  domain: 6, difficulty: "medium",
+  q: "What is the PRIMARY purpose of maintaining a chain of custody for digital evidence?",
+  opts: [
+    "A. To encrypt the evidence to prevent unauthorized access",
+    "B. To document every person who handled the evidence and every transfer, ensuring its integrity and admissibility in legal proceedings",
+    "C. To create backup copies of all evidence for redundancy",
+    "D. To classify the evidence according to its sensitivity level"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Chain of custody documents who had possession, when, and what they did with it, proving the evidence wasn't altered or contaminated—essential for legal admissibility. <b>A</b> is evidence protection, not chain of custody. <b>C</b> is evidence preservation. <b>D</b> is classification."
+},
+{
+  domain: 6, difficulty: "hard",
+  q: "A ransomware incident has encrypted 40% of the organization's servers. The attacker demands payment within 72 hours. The IR team discovers the ransomware entered via a compromised VPN credential 3 weeks ago. What should be the FIRST action?",
+  opts: [
+    "A. Pay the ransom immediately to restore operations",
+    "B. Contain the spread by isolating affected network segments and the compromised VPN entry point while assessing backup integrity and the full scope of attacker access",
+    "C. Immediately restore all servers from the most recent backups",
+    "D. Rebuild all servers from scratch without investigating the attack vector"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Containment is the priority—stop the spread, close the entry point (compromised VPN), and assess the full scope. The 3-week dwell time means the attacker may have established persistence, compromised backups, or exfiltrated data. Restoring without containment risks re-infection. <b>A</b> doesn't guarantee decryption and funds criminals. <b>C</b> backups may be compromised or incomplete. <b>D</b> loses forensic evidence."
+},
+{
+  domain: 6, difficulty: "medium",
+  q: "Which disaster recovery strategy has the SHORTEST recovery time but the HIGHEST cost?",
+  opts: [
+    "A. Cold site",
+    "B. Warm site",
+    "C. Hot site",
+    "D. Reciprocal agreement"
+  ],
+  correct: 2,
+  explain: "<b>C is correct.</b> Hot sites are fully equipped, configured, and may have near-real-time data replication, enabling recovery in hours or less. They are the most expensive to maintain. <b>A</b> cold sites have space and power but no equipment (cheapest, longest recovery). <b>B</b> warm sites have equipment but may need data restoration (middle ground). <b>D</b> reciprocal agreements depend on partner capacity."
+},
+{
+  domain: 6, difficulty: "hard",
+  q: "An organization implements a Security Operations Center (SOC) with 24/7 monitoring. After 6 months, the SOC reports that they detect threats within minutes but average response time is 4 hours. What is the MOST effective improvement?",
+  opts: [
+    "A. Hire additional Tier 1 analysts to handle the alert volume",
+    "B. Implement automated response playbooks (SOAR) for well-understood threat categories with pre-approved containment actions, reducing manual steps in the response process",
+    "C. Reduce the number of alerts by disabling noisy detection rules",
+    "D. Outsource the SOC to a managed security service provider"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> When detection is fast but response is slow, automation of well-understood responses (isolate host, block IP, disable account) closes the gap. SOAR playbooks codify approved response procedures. <b>A</b> more analysts may help but doesn't address process inefficiency. <b>C</b> creates detection blind spots. <b>D</b> doesn't necessarily improve response time."
+},
+{
+  domain: 6, difficulty: "medium",
+  q: "What is the PRIMARY purpose of a post-incident review (lessons learned) meeting?",
+  opts: [
+    "A. To assign blame to the individuals responsible for the incident",
+    "B. To identify what went well, what could be improved, and update incident response procedures and security controls to prevent recurrence",
+    "C. To calculate the exact financial cost of the incident for insurance claims",
+    "D. To satisfy regulatory requirements for incident documentation"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Post-incident reviews are blameless analyses focused on improving processes, updating procedures, and strengthening controls. <b>A</b> blame-focused reviews discourage reporting. <b>C</b> cost analysis is separate. <b>D</b> compliance is a secondary benefit."
+},
+{
+  domain: 6, difficulty: "hard",
+  q: "An organization's backup strategy uses the 3-2-1-1-0 rule. What does this rule specify?",
+  opts: [
+    "A. 3 full backups, 2 incremental, 1 differential, 1 offsite, 0 encryption",
+    "B. 3 copies of data, on 2 different media types, 1 copy offsite, 1 copy offline/immutable, 0 errors verified through recovery testing",
+    "C. 3 backup servers, 2 storage arrays, 1 tape library, 1 cloud instance, 0 downtime",
+    "D. Backup every 3 hours, replicate to 2 sites, 1 week retention, 1 month archive, 0 data loss"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> The 3-2-1-1-0 rule: 3 copies of data, 2 different media types (e.g., disk and cloud), 1 offsite copy, 1 offline or immutable copy (ransomware protection), 0 errors verified through regular recovery testing. This evolved from the original 3-2-1 rule to address modern threats."
+},
+{
+  domain: 6, difficulty: "medium",
+  q: "Which change management practice BEST prevents unauthorized changes from being implemented in a production environment?",
+  opts: [
+    "A. Documenting all changes in a spreadsheet after they are made",
+    "B. Requiring formal change requests with risk assessment, testing, approval by a change advisory board (CAB), and implementation during scheduled maintenance windows",
+    "C. Allowing developers direct access to production to make emergency changes",
+    "D. Implementing changes immediately and rolling back if problems occur"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Formal change management includes request documentation, risk assessment, testing in non-production, CAB approval, and scheduled implementation. <b>A</b> is retrospective documentation, not preventive. <b>C</b> bypasses controls. <b>D</b> is reckless and risks outages."
+},
+{
+  domain: 6, difficulty: "hard",
+  q: "During forensic analysis of a compromised Linux server, the investigator discovers that system binaries (ls, ps, netstat) have been replaced with trojanized versions. What type of malware is this and what should the investigator use instead?",
+  opts: [
+    "A. This is ransomware; use the system's built-in recovery mode",
+    "B. This is a rootkit that replaced system binaries; use a trusted forensic toolkit booted from verified read-only media to examine the system",
+    "C. This is adware; run the system's antivirus scanner",
+    "D. This is a worm; disconnect the network cable and the binaries will revert"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Replacing system binaries is a classic user-mode rootkit technique. Compromised tools can't be trusted to show accurate system state. A forensic toolkit on read-only media (known-good binaries) must be used for reliable analysis. <b>A, C, D</b> misidentify the malware type and propose ineffective responses."
+},
+{
+  domain: 6, difficulty: "medium",
+  q: "What type of backup captures only the data that has changed since the LAST FULL backup?",
+  opts: [
+    "A. Incremental backup",
+    "B. Differential backup",
+    "C. Full backup",
+    "D. Mirror backup"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Differential backups capture all changes since the last full backup, growing larger each day. <b>A</b> incremental captures changes since the last backup of any type (smaller, but needs full chain for restore). <b>C</b> full copies everything. <b>D</b> mirror creates an exact copy."
+},
+{
+  domain: 6, difficulty: "hard",
+  q: "An organization experiences a supply chain attack where a legitimate software update is compromised. The signed update passes all integrity checks because the attacker compromised the build pipeline. Which control would BEST detect this type of attack?",
+  opts: [
+    "A. Checking the software vendor's code signing certificate",
+    "B. Implementing behavioral analysis and sandboxing that detects anomalous actions by the updated software, combined with SBOM monitoring and build provenance verification (SLSA)",
+    "C. Running a vulnerability scan against the updated software",
+    "D. Comparing the update hash against the vendor's published hash"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Since the build pipeline was compromised, the code is signed and hashes match. Behavioral analysis detects when software acts outside its expected behavior profile. SLSA (Supply-chain Levels for Software Artifacts) verifies build provenance. <b>A, D</b> won't help—signatures and hashes are valid. <b>C</b> may not detect custom backdoors."
+},
+{
+  domain: 6, difficulty: "medium",
+  q: "Which phase of incident response involves returning affected systems to normal operation and confirming that the threat has been eliminated?",
+  opts: [
+    "A. Identification",
+    "B. Containment",
+    "C. Recovery",
+    "D. Eradication"
+  ],
+  correct: 2,
+  explain: "<b>C is correct.</b> Recovery involves restoring systems to normal operation, verifying functionality, and confirming the threat is eliminated. <b>A</b> is detecting the incident. <b>B</b> is limiting the spread. <b>D</b> is removing the cause (malware, compromised accounts), which precedes recovery."
+},
+{
+  domain: 6, difficulty: "hard",
+  q: "The SOC identifies an active threat actor performing lateral movement in the network. The attacker is using living-off-the-land techniques (PowerShell, WMI, legitimate admin tools). What detection approach is MOST effective against this?",
+  opts: [
+    "A. Signature-based antivirus scanning on all endpoints",
+    "B. User and entity behavior analytics (UEBA) combined with endpoint detection and response (EDR) monitoring process lineage, command-line arguments, and deviation from baseline behavior",
+    "C. Network-based intrusion detection system (NIDS) with updated signatures",
+    "D. Periodic vulnerability scanning of all internal systems"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Living-off-the-land techniques use legitimate tools, evading signature-based detection. UEBA detects behavioral anomalies (unusual admin tool usage patterns) and EDR tracks process ancestry and command-line activity to identify malicious use of legitimate tools. <b>A</b> won't detect legitimate tools. <b>C</b> may miss encrypted or legitimate-looking traffic. <b>D</b> is preventive, not detective."
+},
+{
+  domain: 6, difficulty: "medium",
+  q: "What is the PRIMARY purpose of a service level agreement (SLA) with a managed security service provider (MSSP)?",
+  opts: [
+    "A. To specify the MSSP's internal staffing requirements",
+    "B. To define measurable performance expectations including response times, uptime guarantees, and escalation procedures",
+    "C. To transfer all security liability to the MSSP",
+    "D. To give the MSSP full administrative access to all organizational systems"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> SLAs establish clear, measurable expectations for service delivery, including incident response times, availability, reporting, and escalation paths. <b>A</b> internal staffing is the MSSP's concern. <b>C</b> responsibility can't be fully transferred. <b>D</b> access should follow least privilege."
+},
+{
+  domain: 6, difficulty: "hard",
+  q: "An organization needs to establish a recovery point objective (RPO) of 15 minutes for their transactional database. Which backup technology BEST meets this requirement?",
+  opts: [
+    "A. Nightly full backups with hourly incremental backups",
+    "B. Continuous data protection (CDP) with real-time transaction log shipping or synchronous database replication",
+    "C. Weekly full backups with daily differential backups",
+    "D. Snapshot-based backups taken every 4 hours"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> CDP captures every change as it occurs, and transaction log shipping/synchronous replication ensures near-zero data loss, easily meeting the 15-minute RPO. <b>A</b> hourly incremental gives a 1-hour RPO at best. <b>C</b> daily differential gives a 24-hour RPO. <b>D</b> 4-hour snapshots give a 4-hour RPO."
+},
+
+// ── DOMAIN 8 — Software Development Security (15 new) ──
+{
+  domain: 7, difficulty: "hard",
+  q: "A security review of a web application reveals that user input is directly interpolated into SQL queries. The developer argues that input validation alone is sufficient. Why is this argument flawed?",
+  opts: [
+    "A. Input validation is sufficient; parameterized queries are unnecessary overhead",
+    "B. Input validation can be bypassed through encoding tricks, filter evasion, or second-order injection; parameterized queries (prepared statements) provide structural separation of code and data that fundamentally prevents SQL injection regardless of input content",
+    "C. SQL injection is no longer a relevant threat in modern databases",
+    "D. Only stored procedures can prevent SQL injection"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Parameterized queries treat user input as data, never as executable SQL, providing structural prevention. Input validation can be bypassed (Unicode encoding, double encoding, second-order injection where stored data later becomes a payload). Defense-in-depth uses both, but parameterized queries are the primary control. <b>A</b> is the flawed argument. <b>C</b> SQLi remains #3 on OWASP Top 10. <b>D</b> stored procedures can also be vulnerable if they use dynamic SQL."
+},
+{
+  domain: 7, difficulty: "medium",
+  q: "What is the MOST important security practice during the requirements phase of the SDLC?",
+  opts: [
+    "A. Performing penetration testing on the requirements document",
+    "B. Defining security requirements, abuse cases, and compliance constraints alongside functional requirements",
+    "C. Writing all the application code with security in mind",
+    "D. Deploying the application to a secure environment"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Security requirements defined early ensure security is built in, not bolted on. Abuse cases (misuse cases) identify how attackers might abuse functionality. <b>A</b> pentest is for testing phase. <b>C</b> coding is the implementation phase. <b>D</b> deployment is a later phase."
+},
+{
+  domain: 7, difficulty: "hard",
+  q: "A development team implements Content Security Policy (CSP) headers to prevent XSS. However, their CSP includes 'unsafe-inline' for scripts. Why does this significantly weaken the protection?",
+  opts: [
+    "A. 'unsafe-inline' only affects CSS, not JavaScript execution",
+    "B. 'unsafe-inline' allows inline script execution, which is exactly what attackers inject in XSS attacks — it effectively nullifies CSP's primary XSS protection by allowing the browser to execute attacker-injected inline code",
+    "C. 'unsafe-inline' causes the CSP header to be ignored entirely by browsers",
+    "D. 'unsafe-inline' only applies to images and has no effect on scripts"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> The main purpose of CSP for XSS prevention is blocking inline script execution. 'unsafe-inline' defeats this by explicitly allowing inline scripts—the exact attack vector for reflected and stored XSS. Use nonces or hashes instead. <b>A</b> unsafe-inline applies to the directive it's in (script-src). <b>C</b> the rest of CSP still applies. <b>D</b> incorrect."
+},
+{
+  domain: 7, difficulty: "medium",
+  q: "Which OWASP Top 10 category addresses the risk of using components with known vulnerabilities?",
+  opts: [
+    "A. A01:2021 – Broken Access Control",
+    "B. A06:2021 – Vulnerable and Outdated Components",
+    "C. A03:2021 – Injection",
+    "D. A09:2021 – Security Logging and Monitoring Failures"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> A06:2021 specifically addresses the risk of using libraries, frameworks, and components with known vulnerabilities. SCA tools help detect these. <b>A</b> is access control failures. <b>C</b> is injection attacks. <b>D</b> is logging/monitoring deficiencies."
+},
+{
+  domain: 7, difficulty: "hard",
+  q: "A team is implementing server-side request forgery (SSRF) protections. Which combination of controls provides the MOST comprehensive defense?",
+  opts: [
+    "A. Input validation with a regex that blocks 'localhost' and '127.0.0.1'",
+    "B. Allow-list of permitted destination URLs/IPs, DNS resolution validation, network-level egress filtering, and disabling unnecessary URL schemes (file://, gopher://, dict://)",
+    "C. Web application firewall with default rules",
+    "D. Requiring HTTPS for all outbound requests"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> SSRF defense requires multiple layers: allow-listing limits destinations, DNS validation prevents DNS rebinding, egress filtering blocks internal network access, and disabling URL schemes prevents non-HTTP exploitation. <b>A</b> is easily bypassed (decimal IPs, IPv6, DNS rebinding, alternate encodings). <b>C</b> WAFs often miss SSRF. <b>D</b> HTTPS doesn't prevent SSRF."
+},
+{
+  domain: 7, difficulty: "medium",
+  q: "What is the PRIMARY benefit of threat modeling during software design?",
+  opts: [
+    "A. It eliminates all security vulnerabilities from the final product",
+    "B. It systematically identifies potential threats and design weaknesses early when they are cheapest to address",
+    "C. It replaces the need for security testing before release",
+    "D. It provides legal protection against security breaches"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Threat modeling identifies design-level security issues early in the SDLC when fixes are orders of magnitude cheaper than post-deployment remediation. <b>A</b> no methodology eliminates all vulnerabilities. <b>C</b> testing is still needed. <b>D</b> it doesn't provide legal protection."
+},
+{
+  domain: 7, difficulty: "hard",
+  q: "A microservices application uses JWTs for authentication between services. A security review finds that the API gateway accepts JWTs signed with the 'none' algorithm. What is the vulnerability and fix?",
+  opts: [
+    "A. The 'none' algorithm is the most secure option; no changes needed",
+    "B. The 'none' algorithm means the JWT has no signature verification — an attacker can forge arbitrary tokens with any claims; fix by configuring the gateway to reject tokens with 'alg: none' and explicitly allow only approved algorithms (e.g., RS256)",
+    "C. The 'none' algorithm only affects encryption, not authentication",
+    "D. The 'none' algorithm is automatically upgraded to HS256 by the server"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> The JWT 'none' algorithm vulnerability allows attackers to create unsigned tokens that the server accepts as valid. The fix: explicitly define acceptable algorithms in server configuration and reject 'none'. This is a well-known JWT vulnerability (CVE-2015-9235 affected multiple libraries). <b>A, C, D</b> are incorrect."
+},
+{
+  domain: 7, difficulty: "medium",
+  q: "Which secure coding practice BEST prevents cross-site scripting (XSS) attacks?",
+  opts: [
+    "A. Encrypting all data stored in the database",
+    "B. Context-aware output encoding/escaping of all user-supplied data before rendering in HTML, JavaScript, CSS, or URL contexts",
+    "C. Using CAPTCHA on all forms",
+    "D. Implementing rate limiting on API endpoints"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Context-aware output encoding converts special characters to their safe representations based on where the data is rendered (HTML entity encoding, JavaScript escaping, URL encoding, CSS escaping). <b>A</b> protects storage, not output. <b>C, D</b> don't address XSS."
+},
+{
+  domain: 7, difficulty: "hard",
+  q: "A CI/CD pipeline builds container images from a Dockerfile. A security scan reveals that the base image contains 142 known vulnerabilities and the application runs as root inside the container. What is the BEST remediation?",
+  opts: [
+    "A. Accept the risk since containers provide isolation from the host",
+    "B. Use a minimal base image (distroless or Alpine), run the application as a non-root user, implement multi-stage builds to exclude build tools, and add automated image scanning as a pipeline gate",
+    "C. Add a vulnerability scanner that runs after deployment to production",
+    "D. Sign the container image to prove it hasn't been tampered with"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Minimal base images reduce the attack surface, non-root execution limits container escape impact, multi-stage builds exclude unnecessary tools, and pipeline scanning prevents vulnerable images from deploying. <b>A</b> container escape attacks exist. <b>C</b> scanning after deployment is too late. <b>D</b> signing proves integrity but doesn't fix vulnerabilities."
+},
+{
+  domain: 7, difficulty: "medium",
+  q: "What is the PRIMARY purpose of code signing in software development?",
+  opts: [
+    "A. To encrypt the source code so it cannot be reverse-engineered",
+    "B. To provide assurance of the software's origin (authenticity) and that it has not been modified since signing (integrity)",
+    "C. To compress the software for faster distribution",
+    "D. To license the software for specific hardware"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Code signing uses digital signatures to verify who published the code (authenticity) and that it hasn't been tampered with (integrity). <b>A</b> code signing doesn't encrypt source code. <b>C, D</b> are unrelated to code signing."
+},
+{
+  domain: 7, difficulty: "hard",
+  q: "An application handles file uploads. A security tester uploads a file named '../../../etc/passwd' and discovers the server creates the file outside the intended upload directory. What vulnerability is this?",
+  opts: [
+    "A. SQL injection",
+    "B. Path traversal (directory traversal) vulnerability allowing arbitrary file write through insufficient filename sanitization",
+    "C. Cross-site request forgery (CSRF)",
+    "D. Server-side template injection (SSTI)"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Path traversal uses '../' sequences in filenames to escape the intended directory. Arbitrary file write can lead to code execution (e.g., writing to web root or overwriting configuration files). Fix: sanitize filenames, use a random generated name, and validate the canonical path stays within the upload directory. <b>A, C, D</b> are different vulnerability types."
+},
+{
+  domain: 7, difficulty: "medium",
+  q: "Which development methodology integrates security practices throughout every phase of the software development lifecycle rather than treating security as a separate phase?",
+  opts: [
+    "A. Waterfall with a security phase at the end",
+    "B. DevSecOps — integrating security into development and operations continuously",
+    "C. Rapid Application Development (RAD) with no security considerations",
+    "D. Big bang deployment with post-release security patching"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> DevSecOps embeds security into every phase: secure coding, automated security testing in CI/CD, infrastructure as code security scanning, and continuous monitoring in production. <b>A</b> treats security as a gate, not integrated. <b>C, D</b> neglect security."
+},
+{
+  domain: 7, difficulty: "hard",
+  q: "A development team uses an open-source library that has a known deserialization vulnerability. The library maintainer has not released a patch. What is the MOST appropriate action?",
+  opts: [
+    "A. Continue using the library since it's open-source and therefore transparent",
+    "B. Implement input validation on serialized data, add integrity checks, apply a virtual patch at the WAF level, and evaluate alternative libraries or apply a community fork that addresses the vulnerability",
+    "C. Downgrade to an older version of the library",
+    "D. Disable serialization features in the application entirely"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> A layered approach: validate/sanitize serialized input, use integrity checks (HMAC) on serialized data, WAF virtual patching as a short-term measure, and evaluate alternatives for long-term fix. <b>A</b> transparency doesn't mean safety. <b>C</b> older versions likely have more vulnerabilities. <b>D</b> may not be functionally feasible."
+},
+{
+  domain: 7, difficulty: "medium",
+  q: "What is a race condition vulnerability in software?",
+  opts: [
+    "A. When two users try to log in at the same time",
+    "B. When the behavior of software depends on the relative timing of events, allowing an attacker to exploit the window between a security check and the use of the checked resource",
+    "C. When a program runs faster than expected, causing buffer overflow",
+    "D. When multiple applications compete for network bandwidth"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> Race conditions (including TOCTOU) occur when timing of events affects program behavior. An attacker can exploit the gap between checking a condition and acting on it. <b>A</b> concurrent logins aren't inherently a race condition. <b>C, D</b> are not race conditions."
+},
+{
+  domain: 7, difficulty: "hard",
+  q: "An organization is implementing an AI/ML model for fraud detection. From a software security perspective, what is the MOST critical risk unique to ML systems?",
+  opts: [
+    "A. ML models consume more CPU than traditional software",
+    "B. Adversarial attacks where carefully crafted inputs cause the model to make incorrect predictions, combined with training data poisoning that can introduce hidden biases or backdoors into the model",
+    "C. ML models cannot be deployed in cloud environments",
+    "D. ML models don't require any security testing because they learn automatically"
+  ],
+  correct: 1,
+  explain: "<b>B is correct.</b> ML-specific threats include adversarial examples (manipulated inputs that fool the model), training data poisoning (corrupting the training set to create blind spots or backdoors), model inversion (extracting training data), and model stealing. These require ML-specific security testing. <b>A</b> is a resource concern. <b>C</b> is false. <b>D</b> is dangerously wrong."
 }
 ];
 
@@ -7595,6 +9060,7 @@ function submitQuiz() {
 
   updateStreak();
   renderDash();
+  renderTracker();
   sendWebhook({ score: correct, total: total, pct: pct, domains: domScores, type: 'quiz' });
 }
 
@@ -7769,6 +9235,7 @@ function endExam() {
   save('cissp_hist', history);
   updateStreak();
   renderDash();
+  renderTracker();
   sendWebhook({ score: correct, total: total, pct: pct, domains: domScores, type: 'exam' });
 }
 
@@ -7877,7 +9344,7 @@ function renderRef() {
 
 // ── TRACKER ──
 function renderTracker() {
-  // per-week stats
+  // per-week stats + quiz stats combined
   const weekStats = {};
   TRACKER_ITEMS.forEach((item, i) => {
     if (!weekStats[item.week]) weekStats[item.week] = { done: 0, total: 0 };
@@ -7886,12 +9353,28 @@ function renderTracker() {
   });
 
   let statsHtml = '';
+  // Add quiz count stat first
+  statsHtml += '<div class="stat-box"><div class="stat-num">' + history.length + '</div><div class="stat-lbl">Quizzes Taken</div></div>';
+  // Add total questions answered
+  let totalQs = 0;
+  history.forEach(h => { totalQs += h.total; });
+  statsHtml += '<div class="stat-box"><div class="stat-num">' + totalQs + '</div><div class="stat-lbl">Questions Answered</div></div>';
+  // Add avg score
+  let sumPct = 0;
+  history.forEach(h => { sumPct += h.pct; });
+  const avgPct = history.length ? Math.round(sumPct / history.length) : 0;
+  statsHtml += '<div class="stat-box"><div class="stat-num">' + avgPct + '%</div><div class="stat-lbl">Avg Score</div></div>';
+  // Week stats
   Object.keys(weekStats).forEach(w => {
     const ws = weekStats[w];
     statsHtml += '<div class="stat-box"><div class="stat-num">' + ws.done + '/' + ws.total + '</div><div class="stat-lbl">' + w + '</div></div>';
   });
   $('trkStats').innerHTML = statsHtml;
 
+  // Quiz Activity Log
+  renderQuizLog();
+
+  // Study plan checklist
   let html = '';
   TRACKER_ITEMS.forEach((item, i) => {
     const isDone = tracker[i];
@@ -7902,6 +9385,48 @@ function renderTracker() {
       '</div>';
   });
   $('trkOut').innerHTML = html;
+}
+
+function renderQuizLog() {
+  if (!history.length) {
+    $('quizLog').innerHTML = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:8px;text-align:center;color:var(--muted);font-size:13px">No quiz attempts yet. Go to the <strong>Quiz</strong> tab to start practicing!</div>';
+    return;
+  }
+
+  let html = '<h3 style="font-family:var(--font-mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px">Recent Quiz Activity</h3>';
+  html += '<div style="display:flex;flex-direction:column;gap:6px">';
+
+  var recent = history.slice(-10).reverse();
+  recent.forEach(function(h) {
+    var d = new Date(h.date);
+    var dateStr = fmtDate(d);
+    var timeStr = d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    var pctColor = h.pct >= 70 ? 'var(--success)' : h.pct >= 50 ? 'var(--warning)' : 'var(--accent2)';
+    var passLabel = h.pct >= 70 ? 'PASS' : 'NEEDS WORK';
+    var passColor = h.pct >= 70 ? '#d1fae5' : '#fef3c7';
+    var passBorder = h.pct >= 70 ? 'var(--success)' : 'var(--warning)';
+
+    // Domain breakdown
+    var domHtml = '';
+    if (h.domains) {
+      Object.keys(h.domains).forEach(function(dk) {
+        var ds = h.domains[dk];
+        var dp = Math.round((ds.right / ds.total) * 100);
+        var dName = DOMAINS[dk] ? DOMAINS[dk].num : 'D?';
+        domHtml += '<span style="font-family:var(--font-mono);font-size:10px;padding:2px 6px;border-radius:4px;background:var(--surface2);margin-right:4px">' + dName + ': ' + dp + '%</span>';
+      });
+    }
+
+    html += '<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">' +
+      '<div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);min-width:110px">' + dateStr + ' ' + timeStr + '</div>' +
+      '<div style="font-family:var(--font-mono);font-size:16px;font-weight:500;min-width:60px">' + h.score + '/' + h.total + '</div>' +
+      '<div style="font-family:var(--font-mono);font-size:14px;font-weight:500;color:' + pctColor + ';min-width:45px">' + h.pct + '%</div>' +
+      '<div style="font-size:10px;font-family:var(--font-mono);padding:3px 8px;border-radius:4px;background:' + passColor + ';border:1px solid ' + passBorder + ';color:' + passBorder + ';letter-spacing:0.05em">' + passLabel + '</div>' +
+      '<div style="flex:1;display:flex;flex-wrap:wrap;gap:2px;justify-content:flex-end">' + domHtml + '</div>' +
+      '</div>';
+  });
+  html += '</div>';
+  $('quizLog').innerHTML = html;
 }
 
 function handleTrackerClick(e) {
